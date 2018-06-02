@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_height="wrap_content"
+              android:layout_width="match_parent"
+              android:id="@+id/resort_card_view_layout">
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/resort_card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginLeft="@dimen/resort_card_margin"
+        android:layout_marginRight="@dimen/resort_card_margin"
+        android:layout_marginTop="@dimen/resort_card_top_margin"
+        android:layout_marginBottom="@dimen/resort_card_bottom_margin"
+        card_view:cardCornerRadius="4dp">
+
+        <ImageView
+            android:id="@+id/resort_card_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/resort_card_content_description"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/gradient"/>
+
+        <TextView
+            android:id="@+id/resort_name_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="bottom"
+            android:textSize="30sp"/>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
