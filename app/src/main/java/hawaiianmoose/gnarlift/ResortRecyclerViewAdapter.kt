@@ -9,7 +9,7 @@ import com.squareup.picasso.Picasso
 import data.StaticResortDataItemResponse
 import kotlinx.android.synthetic.main.resort_card_view.view.*
 
-class ResortRecyclerViewAdapter(private val staticResortData: StaticResortDataItemResponse?): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>() {
+class ResortRecyclerViewAdapter(private val staticResortData: StaticResortDataItemResponse): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>() {
 
     class ViewHolder(val cardView: LinearLayout) : RecyclerView.ViewHolder(cardView)
 
@@ -21,14 +21,14 @@ class ResortRecyclerViewAdapter(private val staticResortData: StaticResortDataIt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.cardView.resort_name_text.text = staticResortData!!.resorts[position].name //TODO null
+        holder.cardView.resort_name_text.text = staticResortData.resorts[position].name
+        Picasso.get().load(staticResortData.resorts[position].imageUrl).fit().into(holder.cardView.resort_card_background)
 
-        //testing image load and click
-        Picasso.get().load(staticResortData!!.resorts[position].imageUrl).fit().into(holder.cardView.resort_card_background)
+        //testing click
         holder.cardView.setOnClickListener({
             Toast.makeText(holder.cardView.context, holder.cardView.resort_name_text.text, Toast.LENGTH_LONG).show()
         })
     }
 
-    override fun getItemCount() = staticResortData!!.resorts.size //TODO null
+    override fun getItemCount() = staticResortData.resorts.size
 }

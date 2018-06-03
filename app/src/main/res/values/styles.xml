@@ -7,4 +7,13 @@
         <item name="colorAccent">@color/primaryLightColor</item>
     </style>
 
+    <style name="BottomNavigation">
+        <item name="android:background">@color/primaryDarkColor</item>
+        <item name="itemBackground">@drawable/ripple_pressed</item>
+        <item name="itemIconTint">@drawable/bottom_nav_selector</item>
+        <item name="itemTextColor">@drawable/bottom_nav_selector</item>
+        <item name="paddingStart">4dp</item>
+        <item name="paddingEnd">4dp</item>
+    </style>
+
 </resources>
