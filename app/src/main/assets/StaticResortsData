@@ -1,11 +1,13 @@
 {
   "resorts": [
     {
+      "resortId": "1",
       "name": "Mt Brighton",
       "phone": "810-229-9581",
       "imageUrl": "https://i.imgur.com/ZKZssJq.jpg"
     },
     {
+      "resortId": "2",
       "name": "Vail",
       "phone": "888-500-5155",
       "imageUrl": "https://i.imgur.com/hiUFVIC.jpg"

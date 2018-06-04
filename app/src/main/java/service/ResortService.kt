@@ -7,20 +7,15 @@ import utils.JsonUtil
 
 class ResortService private constructor(passedContext: Context) {
 
-    private var context: Context
-
-    init {
-        context = passedContext
-    }
+    private var context: Context = passedContext
 
     companion object : SingletonHolder<ResortService, Context>(::ResortService)
 
     fun fetchStaticResortData(): StaticResortDataItemResponse {
         val staticResortDataString = JsonUtil.parseJsonAsString(context, "StaticResortsData")
         val gson = Gson()
-        val staticResortDataItemResponse = gson.fromJson(staticResortDataString, StaticResortDataItemResponse::class.java)
 
-        return staticResortDataItemResponse
+        return gson.fromJson(staticResortDataString, StaticResortDataItemResponse::class.java)
     }
 }
 

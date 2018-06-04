@@ -8,6 +8,7 @@ class StaticResortDataItemResponse: Serializable {
 }
 
 class StaticResortDataItem: Serializable {
+    val resortId: String? = null
     val name: String? = null
     val phone: String? = null
     val imageUrl: String? = null

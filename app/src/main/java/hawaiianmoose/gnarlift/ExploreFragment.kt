@@ -11,19 +11,17 @@ import android.view.ViewGroup
 import data.StaticResortDataItemResponse
 
 private const val StaticResortData = "StaticResortData"
-private const val ARG_PARAM2 = "param2" //TODO Remove?
+private const val FavoritesData = "FavoritesData"
 
 class ExploreFragment : Fragment() {
-
-    // TODO: Rename and change types of parameters
     private var staticResortData: StaticResortDataItemResponse = StaticResortDataItemResponse()
-    private var param2: String? = null
+    private var favoritesData: ArrayList<String> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             staticResortData = it.get(StaticResortData) as StaticResortDataItemResponse
-            param2 = it.getString(ARG_PARAM2)
+            favoritesData = it.get(FavoritesData) as ArrayList<String>
         }
     }
 
@@ -36,14 +34,14 @@ class ExploreFragment : Fragment() {
 
         val recycler = view.findViewById(R.id.explore_resorts_recycler) as RecyclerView
         val viewManager = LinearLayoutManager(view.context)
-        val viewAdapter = ResortRecyclerViewAdapter(staticResortData)
+        val viewAdapter = ResortRecyclerViewAdapter(staticResortData, favoritesData)
         recycler.setHasFixedSize(true)
         recycler.layoutManager = viewManager
         recycler.adapter = viewAdapter
 
         val searchView = view.findViewById(R.id.explore_search) as SearchView
         searchView.setOnClickListener({
-            searchView.setIconified(false)
+            searchView.isIconified = false
         })
 
     }
@@ -51,11 +49,11 @@ class ExploreFragment : Fragment() {
     companion object {
 
         @JvmStatic
-        fun newInstance(staticResortData: StaticResortDataItemResponse, param2: String) =
+        fun newInstance(staticResortData: StaticResortDataItemResponse, favoritesData: ArrayList<String>) =
                 ExploreFragment().apply {
                     arguments = Bundle().apply {
                         putSerializable(StaticResortData, staticResortData)
-                        putString(ARG_PARAM2, param2)
+                        putStringArrayList(FavoritesData, favoritesData)
                     }
                 }
     }
