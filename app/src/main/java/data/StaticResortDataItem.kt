@@ -4,7 +4,7 @@ import java.io.Serializable
 
 class StaticResortDataItemResponse: Serializable {
 
-    val resorts: List<StaticResortDataItem> = listOf()
+    val resorts: MutableList<StaticResortDataItem> = mutableListOf()
 }
 
 class StaticResortDataItem: Serializable {
