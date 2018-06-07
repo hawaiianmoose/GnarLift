@@ -20,8 +20,7 @@ class MainActivity : AppCompatActivity() {
         loadStaticResortData()
         loadFavoritesData()
 
-
-        openExplorePage(staticData, favoritesData)
+        openExplorePage()
     }
 
     private fun loadFavoritesData() {
@@ -37,21 +36,31 @@ class MainActivity : AppCompatActivity() {
         bottomNavBar.setOnNavigationItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.navigation_home -> {
-                    openExplorePage(staticData, favoritesData)
+                    openExplorePage()
                     true
                 }
-                R.id.navigation_favorites -> true
+                R.id.navigation_favorites -> {
+                    openFavoritesPage()
+                    true
+                }
                 R.id.navigation_account -> true
                 else -> { false }
             }
         }
     }
 
-    private fun openExplorePage(staticData: StaticResortDataItemResponse, favoritesData: MutableSet<String>) {
+    private fun openExplorePage() {
+        loadFavoritesData()
         val favoritesFormattedData = ArrayList<String>()
         favoritesFormattedData.addAll(favoritesData)
-        val exploreFragment = ExploreFragment.newInstance(staticData, favoritesFormattedData)
-        openFragment(exploreFragment)
+        openFragment(ExploreFragment.newInstance(staticData, favoritesFormattedData))
+    }
+
+    private fun openFavoritesPage() {
+        loadFavoritesData()
+        val favoritesFormattedData = ArrayList<String>()
+        favoritesFormattedData.addAll(favoritesData)
+        openFragment(FavoritesFragment.newInstance(staticData, favoritesFormattedData))
     }
 
     private fun openFragment(fragment: Fragment) {

@@ -6,10 +6,8 @@ import data.StaticResortDataItemResponse
 import utils.JsonUtil
 
 class ResortService private constructor(passedContext: Context) {
-
-    private var context: Context = passedContext
-
     companion object : SingletonHolder<ResortService, Context>(::ResortService)
+    private var context: Context = passedContext
 
     fun fetchStaticResortData(): StaticResortDataItemResponse {
         val staticResortDataString = JsonUtil.parseJsonAsString(context, "StaticResortsData")

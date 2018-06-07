@@ -3,7 +3,6 @@ package data
 import java.io.Serializable
 
 class StaticResortDataItemResponse: Serializable {
-
     val resorts: MutableList<StaticResortDataItem> = mutableListOf()
 }
 
