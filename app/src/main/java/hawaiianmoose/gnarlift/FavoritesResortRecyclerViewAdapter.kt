@@ -41,7 +41,7 @@ class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortD
         })
 
         viewHolder.cardView.favorite_resort_button.setOnClickListener {
-            removeFavoriteResort(viewHolder, resortId, resortName, position)
+            removeFavoriteResort(resortId, resortName, position)
         }
     }
 
@@ -51,12 +51,11 @@ class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortD
         return String.format(parentContext.getString(stringId), resortName)
     }
 
-    private fun removeFavoriteResort(viewHolder: ViewHolder, resortId: String, resortName: String, position: Int) {
+    private fun removeFavoriteResort(resortId: String, resortName: String, position: Int) {
         val dialogClickListener = DialogInterface.OnClickListener { dialog, which ->
             when (which) {
                 DialogInterface.BUTTON_POSITIVE -> {
                     dialog.dismiss()
-                    viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_favorite_border_24px)
                     FavoriteService.getInstance(parentContext).removeFavorite(resortId)
                     favoritesData.remove(resortId)
                     favoritesResortData.removeAt(position)
