@@ -10,16 +10,36 @@ import service.ResortService
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var bottomNavBar: BottomNavigationView
     private lateinit var staticData: StaticResortDataItemResponse
     private lateinit var favoritesData: MutableSet<String>
+    private var defaultHomeId: Int = R.id.navigation_home
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        bottomNavBar = findViewById(R.id.bottom_navigation)
         initializeBottomNavBar()
         loadStaticResortData()
         loadFavoritesData()
 
+        openDefaultLandingPage()
+    }
+
+    override fun onBackPressed() {
+        val selectedItemId = bottomNavBar.selectedItemId
+        if (defaultHomeId != selectedItemId) {
+            bottomNavBar.selectedItemId = defaultHomeId
+        } else {
+            super.onBackPressed()
+        }
+    }
+
+    private fun openDefaultLandingPage() = if (favoritesData.any()) {
+        openFavoritesPage()
+        defaultHomeId = R.id.navigation_favorites
+        bottomNavBar.selectedItemId = defaultHomeId
+    } else {
         openExplorePage()
     }
 
@@ -32,7 +52,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initializeBottomNavBar() {
-        val bottomNavBar = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavBar.setOnNavigationItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.navigation_home -> {
@@ -66,7 +85,6 @@ class MainActivity : AppCompatActivity() {
     private fun openFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.container, fragment)
-        transaction.addToBackStack(null)
         transaction.commit()
     }
 }
