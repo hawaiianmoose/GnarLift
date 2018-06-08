@@ -14,7 +14,7 @@
         android:title="@string/nav_favorites"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/navigation_account"
+        android:id="@+id/navigation_info"
         android:enabled="true"
         android:icon="@drawable/ic_sharp_contact_support_24px"
         android:title="@string/info"

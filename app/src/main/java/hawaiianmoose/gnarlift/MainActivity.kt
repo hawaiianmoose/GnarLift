@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun openDefaultLandingPage() = if (favoritesData.any()) {
+    private fun openDefaultLandingPage() = if (favoritesData.size > 1) {
         openFavoritesPage()
         defaultHomeId = R.id.navigation_favorites
         bottomNavBar.selectedItemId = defaultHomeId
@@ -55,35 +55,52 @@ class MainActivity : AppCompatActivity() {
         bottomNavBar.setOnNavigationItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.navigation_home -> {
-                    openExplorePage()
+                    if (bottomNavBar.selectedItemId != R.id.navigation_home) {
+                        if(bottomNavBar.selectedItemId == R.id.navigation_favorites) {
+                            openExplorePage(R.anim.enter_from_left, R.anim.exit_to_right)
+                        }
+                        if(bottomNavBar.selectedItemId == R.id.navigation_info) {
+                            openExplorePage(R.anim.enter_from_right, R.anim.exit_to_left)
+                        }
+                    }
                     true
                 }
                 R.id.navigation_favorites -> {
-                    openFavoritesPage()
+                    if (bottomNavBar.selectedItemId != R.id.navigation_favorites) {
+                        if(bottomNavBar.selectedItemId == R.id.navigation_home) {
+                            openFavoritesPage(R.anim.enter_from_right, R.anim.exit_to_left)
+                        }
+                        if(bottomNavBar.selectedItemId == R.id.navigation_info) {
+                            openFavoritesPage(R.anim.enter_from_right, R.anim.exit_to_right)
+                        }
+                    }
                     true
                 }
-                R.id.navigation_account -> true
+                R.id.navigation_info -> true
                 else -> { false }
             }
         }
     }
 
-    private fun openExplorePage() {
+    private fun openExplorePage(enterAnimationId: Int? = null, exitAnimationId: Int? = null) {
         loadFavoritesData()
         val favoritesFormattedData = ArrayList<String>()
         favoritesFormattedData.addAll(favoritesData)
-        openFragment(ExploreFragment.newInstance(staticData, favoritesFormattedData))
+        openFragment(ExploreFragment.newInstance(staticData, favoritesFormattedData), enterAnimationId, exitAnimationId)
     }
 
-    private fun openFavoritesPage() {
+    private fun openFavoritesPage(enterAnimationId: Int? = null, exitAnimationId: Int? = null) {
         loadFavoritesData()
         val favoritesFormattedData = ArrayList<String>()
         favoritesFormattedData.addAll(favoritesData)
-        openFragment(FavoritesFragment.newInstance(staticData, favoritesFormattedData))
+        openFragment(FavoritesFragment.newInstance(staticData, favoritesFormattedData), enterAnimationId, exitAnimationId)
     }
 
-    private fun openFragment(fragment: Fragment) {
+    private fun openFragment(fragment: Fragment, enterAnimationId: Int?, exitAnimationId: Int?) {
         val transaction = supportFragmentManager.beginTransaction()
+        if (enterAnimationId != null && exitAnimationId != null) {
+            transaction.setCustomAnimations(enterAnimationId, exitAnimationId)
+        }
         transaction.replace(R.id.container, fragment)
         transaction.commit()
     }

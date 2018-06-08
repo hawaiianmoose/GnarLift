@@ -1,16 +1,40 @@
 {
   "resorts": [
     {
-      "resortId": "1",
+      "resortId": "mtbrighton",
       "name": "Mt Brighton",
       "phone": "810-229-9581",
       "imageUrl": "https://i.imgur.com/ZKZssJq.jpg"
     },
     {
-      "resortId": "2",
+      "resortId": "vail",
       "name": "Vail",
       "phone": "888-500-5155",
       "imageUrl": "https://i.imgur.com/hiUFVIC.jpg"
+    },
+    {
+      "resortId": "breck",
+      "name": "Breckenridge",
+      "phone": "800-789-7669",
+      "imageUrl": "https://i.imgur.com/F74R6V2.jpg"
+    },
+    {
+      "resortId": "49-degrees-north",
+      "name": "49 Degrees North",
+      "phone": "509-935-6649",
+      "imageUrl": "https://i.imgur.com/Ii2O3mt.jpg"
+    },
+    {
+      "resortId": "abasin",
+      "name": "Arapaho Basin",
+      "phone": "970-468-0718",
+      "imageUrl": "https://i.imgur.com/mnMJW5u.jpg"
+    },
+    {
+      "resortId": "alta",
+      "name": "Alta",
+      "phone": "801-359-1078",
+      "imageUrl": "https://i.imgur.com/7aUSW9z.jpg"
     }
   ]
 }
