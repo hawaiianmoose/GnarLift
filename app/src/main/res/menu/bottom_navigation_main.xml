@@ -4,7 +4,7 @@
     <item
         android:id="@+id/navigation_home"
         android:enabled="true"
-        android:icon="@drawable/ic_sharp_explore_24px"
+        android:icon="@drawable/ic_sharp_terrain_24px"
         android:title="@string/nav_explore"
         app:showAsAction="ifRoom" />
     <item
@@ -16,7 +16,7 @@
     <item
         android:id="@+id/navigation_account"
         android:enabled="true"
-        android:icon="@drawable/ic_launcher_background"
-        android:title="Stuff"
+        android:icon="@drawable/ic_sharp_contact_support_24px"
+        android:title="@string/info"
         app:showAsAction="ifRoom" />
 </menu>
