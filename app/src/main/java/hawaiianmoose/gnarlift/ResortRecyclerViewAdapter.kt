@@ -13,6 +13,10 @@ import data.StaticResortDataItem
 import data.StaticResortDataItemResponse
 import kotlinx.android.synthetic.main.resort_card_view.view.*
 import service.FavoriteService
+import android.view.animation.AnimationUtils
+import android.view.animation.Animation
+import android.widget.ImageView
+
 
 class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), Filterable {
     lateinit var parentContext: Context
@@ -45,6 +49,9 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
             if (favoritesData.contains(resortId)) {
               removeFavoriteResort(viewHolder, resortId, resortName)
             } else {
+                val image = viewHolder.cardView.favorite_resort_button as ImageView
+                val iconBounce = AnimationUtils.loadAnimation(parentContext, R.anim.bounce)
+                image.startAnimation(iconBounce)
                addFavoriteResort(viewHolder, resortId, resortName)
             }
         }
