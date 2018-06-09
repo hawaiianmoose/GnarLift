@@ -32,7 +32,7 @@ class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortD
         Picasso.get().load(favoritesResortData[position].imageUrl).fit().into(viewHolder.cardView.resort_card_background)
 
         if (favoritesData.contains(favoritesResortData[position].resortId)) {
-            viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_favorite_24px)
+            viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         }
 
         //TODO setup actual click to details page

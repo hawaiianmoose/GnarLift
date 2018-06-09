@@ -10,7 +10,9 @@
         android:id="@+id/favorite_resorts_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/resort_card_margin"
+        android:paddingTop="@dimen/resort_recycler_top_padding"
+        android:paddingBottom="@dimen/resort_recycler_bottom_padding"
+        android:clipToPadding="false"
         android:elevation="@dimen/default_elevation"/>
 
 </LinearLayout>

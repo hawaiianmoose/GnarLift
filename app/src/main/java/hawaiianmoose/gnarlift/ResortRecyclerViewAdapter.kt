@@ -33,7 +33,7 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
         Picasso.get().load(filteredResortData[position].imageUrl).fit().into(viewHolder.cardView.resort_card_background)
 
         if (favoritesData.contains(filteredResortData[position].resortId)) {
-            viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_favorite_24px)
+            viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         }
 
         //TODO setup actual click to details page
@@ -87,14 +87,14 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
     }
 
     private fun addFavoriteResort(viewHolder: ViewHolder, resortId: String, resortName: String) {
-        viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_favorite_24px)
+        viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         FavoriteService.getInstance(parentContext).saveFavorite(resortId)
         favoritesData.add(resortId ?: "")
         Toast.makeText(parentContext, makeToast(resortName, R.string.toast_added), Toast.LENGTH_LONG).show()
     }
 
     private fun removeFavoriteResort(viewHolder: ViewHolder, resortId: String, resortName: String) {
-        viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_favorite_border_24px)
+        viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_border_24px)
         FavoriteService.getInstance(parentContext).removeFavorite(resortId)
         favoritesData.remove(resortId)
         Toast.makeText(parentContext, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_LONG).show()
