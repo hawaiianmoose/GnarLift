@@ -2,6 +2,8 @@ package hawaiianmoose.gnarlift
 
 import android.content.Context
 import android.content.DialogInterface
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import com.squareup.picasso.Picasso
+import data.Constants
 import data.StaticResortDataItem
 import data.StaticResortDataItemResponse
 import kotlinx.android.synthetic.main.resort_card_view.view.*
@@ -35,9 +38,12 @@ class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortD
             viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         }
 
-        //TODO setup actual click to details page
         viewHolder.cardView.setOnClickListener({
-            Toast.makeText(parentContext, viewHolder.cardView.resort_name_text.text, Toast.LENGTH_LONG).show()
+            val intent = Intent(parentContext, ResortDetailActivity::class.java).apply {
+                putExtra(Constants.favoritesData, favoritesResortData[position])
+            }
+
+            startActivity(parentContext, intent, null)
         })
 
         viewHolder.cardView.favorite_resort_button.setOnClickListener {
@@ -59,7 +65,7 @@ class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortD
                     FavoriteService.getInstance(parentContext).removeFavorite(resortId)
                     favoritesData.remove(resortId)
                     favoritesResortData.removeAt(position)
-                    Toast.makeText(parentContext, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_LONG).show()
+                    Toast.makeText(parentContext, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_SHORT).show()
                     notifyDataSetChanged()
                 }
 

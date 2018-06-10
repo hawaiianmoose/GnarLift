@@ -6,7 +6,7 @@ class StaticResortDataItemResponse: Serializable {
     val resorts: MutableList<StaticResortDataItem> = mutableListOf()
 }
 
-class StaticResortDataItem: Serializable {
+class StaticResortDataItem : Serializable {
     val resortId: String? = null
     val name: String? = null
     val phone: String? = null

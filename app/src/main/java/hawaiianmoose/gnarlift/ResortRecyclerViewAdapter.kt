@@ -1,6 +1,8 @@
 package hawaiianmoose.gnarlift
 
 import android.content.Context
+import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,7 +16,7 @@ import data.StaticResortDataItemResponse
 import kotlinx.android.synthetic.main.resort_card_view.view.*
 import service.FavoriteService
 import android.view.animation.AnimationUtils
-import android.view.animation.Animation
+import data.Constants
 import android.widget.ImageView
 
 
@@ -40,9 +42,12 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
             viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         }
 
-        //TODO setup actual click to details page
         viewHolder.cardView.setOnClickListener({
-            Toast.makeText(parentContext, viewHolder.cardView.resort_name_text.text, Toast.LENGTH_LONG).show()
+            val intent = Intent(parentContext, ResortDetailActivity::class.java).apply {
+                putExtra(Constants.favoritesData, filteredResortData[position])
+            }
+
+            startActivity(parentContext, intent, null)
         })
 
         viewHolder.cardView.favorite_resort_button.setOnClickListener {
@@ -97,14 +102,14 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
         viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         FavoriteService.getInstance(parentContext).saveFavorite(resortId)
         favoritesData.add(resortId ?: "")
-        Toast.makeText(parentContext, makeToast(resortName, R.string.toast_added), Toast.LENGTH_LONG).show()
+        Toast.makeText(parentContext, makeToast(resortName, R.string.toast_added), Toast.LENGTH_SHORT).show()
     }
 
     private fun removeFavoriteResort(viewHolder: ViewHolder, resortId: String, resortName: String) {
         viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_border_24px)
         FavoriteService.getInstance(parentContext).removeFavorite(resortId)
         favoritesData.remove(resortId)
-        Toast.makeText(parentContext, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_LONG).show()
+        Toast.makeText(parentContext, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_SHORT).show()
     }
 
     class ViewHolder(val cardView: LinearLayout) : RecyclerView.ViewHolder(cardView)
