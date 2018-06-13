@@ -4,6 +4,7 @@ import io.reactivex.Observable
 import data.Constants
 import data.ResortDataItemResponse
 import com.google.gson.Gson
+import data.Lift
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
@@ -27,9 +28,21 @@ class LiftieService {
             val gson = Gson()
             val results = gson.fromJson<ResortDataItemResponse>(response.body()?.string(), ResortDataItemResponse::class.java)
 
-            subscriber.onNext(results)
+            subscriber.onNext(buildLiftStatusObject(results))
             subscriber.onComplete()
         }
+    }
+
+    private fun buildLiftStatusObject(results: ResortDataItemResponse): ResortDataItemResponse {
+        results.liftStatus = mutableListOf()
+        results.lifts?.status?.forEach { lift ->
+            var boolVal = false
+            if (lift.value == "open") { boolVal = true }
+
+            results.liftStatus!!.add(Lift(lift.key, boolVal))
+        }
+
+        return results
     }
 
     fun fetchResortInfo(resortId: String, liftieListener: PublishSubject<ResortDataItemResponse>) {

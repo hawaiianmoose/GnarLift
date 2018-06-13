@@ -2,6 +2,8 @@ package hawaiianmoose.gnarlift
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.Button
 import android.widget.TextView
 import data.Constants
@@ -54,5 +56,11 @@ class ResortDetailActivity : AppCompatActivity() {
     }
 
     private fun bindLiftieData(liftieResortDataResponse: ResortDataItemResponse) {
+        val recycler = findViewById<RecyclerView>(R.id.lift_status)
+        val viewManager = LinearLayoutManager(this.baseContext)
+        val viewAdapter = ResortDetailRecyclerViewAdapter(liftieResortDataResponse)
+        recycler.setHasFixedSize(true)
+        recycler.layoutManager = viewManager
+        recycler.adapter = viewAdapter
     }
 }

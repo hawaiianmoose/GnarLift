@@ -11,4 +11,5 @@
     <string name="remove_favorite_message">"Are you sure you want to remove this resort from your favorites?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="lift_status">Lift Status</string>
 </resources>

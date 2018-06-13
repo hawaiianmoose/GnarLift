@@ -9,16 +9,13 @@
         <TextView
             android:id="@+id/resort_name_title"
             android:background="@color/primaryColor"
-            android:text="Mt Brighton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="56dp"
             android:paddingEnd="24dp"
             android:textSize="24sp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp">
-
-        </TextView>
+            android:paddingBottom="8dp"/>
 
     <Button
         android:id="@+id/back_button"
@@ -30,6 +27,19 @@
         android:background="@drawable/ic_sharp_arrow_back_24px"
         android:backgroundTint="@android:color/white"/>
 
+
+    <ScrollView
+        android:id="@+id/detail_scrollview"
+        android:layout_below="@id/resort_name_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/lift_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </ScrollView>
 
 
 </RelativeLayout>

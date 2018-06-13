@@ -19,7 +19,6 @@ import android.view.animation.AnimationUtils
 import data.Constants
 import android.widget.ImageView
 
-
 class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), Filterable {
     lateinit var parentContext: Context
     var staticResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts

@@ -12,12 +12,16 @@ class ResortDataItemResponse: Serializable{
     val weather: Weather? = null
     val webcams: Array<Webcams>? = null
     val open: Boolean? = null
+    var liftStatus: MutableList<Lift>? = null
+
 }
 
 class Lifts {
     var status: HashMap<String, String>? = null
     var stats: Stats? = null
 }
+
+class Lift(var name: String, var isOpen: Boolean) {}
 
 class Stats {
     var open: String? = null
@@ -53,7 +57,7 @@ class Extended_entities {
 
 class Entities {
     var symbols: Array<String>? = null
-    var urls: Array<String>? = null
+    val urls: Array<Urls>? = null
     var hashtags: Array<Hashtags>? = null
     var media: Array<Media>? = null
     var user_mentions: Array<UserMentions>? = null
@@ -83,7 +87,6 @@ class Sizes {
     var medium: ImageSize? = null
     var large: ImageSize? = null
 }
-
 
 class ImageSize {
     var w: String? = null
@@ -133,4 +136,11 @@ class Mobile {
     var name: String? = null
     var image: String? = null
     var notice: String? = null
+}
+
+class Urls {
+    var expanded_url: String? = null
+    var indices: Array<String>? = null
+    var display_url: String? = null
+    var url: String? = null
 }
