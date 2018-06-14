@@ -7,4 +7,6 @@
     <dimen name="resort_recycler_bottom_padding">8dp</dimen>
     <dimen name="resort_recycler_top_padding">16dp</dimen>
     <dimen name="default_elevation">8dp</dimen>
+    <dimen name="app_bar_height">180dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
