@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import data.Constants
 import data.ResortDataItemResponse
@@ -13,6 +14,7 @@ import io.reactivex.Observer
 import service.LiftieService
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject
+import kotlinx.android.synthetic.main.activity_resort_detail.view.*
 
 class ResortDetailActivity : AppCompatActivity() {
 
@@ -56,11 +58,14 @@ class ResortDetailActivity : AppCompatActivity() {
     }
 
     private fun bindLiftieData(liftieResortDataResponse: ResortDataItemResponse) {
+        val liftOpenBar = findViewById<ProgressBar>(R.id.liftStatusBar)
         val recycler = findViewById<RecyclerView>(R.id.lift_status)
         val viewManager = LinearLayoutManager(this.baseContext)
         val viewAdapter = ResortDetailRecyclerViewAdapter(liftieResortDataResponse)
         recycler.setHasFixedSize(true)
         recycler.layoutManager = viewManager
         recycler.adapter = viewAdapter
+
+        liftOpenBar.progress = liftieResortDataResponse.lifts?.stats?.percentage?.open?.toBigDecimal()?.toInt()!!
     }
 }

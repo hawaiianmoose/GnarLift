@@ -19,7 +19,8 @@
             android:paddingEnd="24dp"
             android:textSize="24sp"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"/>
+            android:paddingBottom="8dp"
+            android:textColor="@android:color/white"/>
 
         <Button
             android:id="@+id/back_button"
@@ -47,36 +48,34 @@
     android:layout_height="wrap_content"
     tools:context=".ResortDetailActivity">
 
-    <View
-        android:id="@+id/vertical_divider"
-        android:layout_width="1dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:layout_centerHorizontal="true"
-        android:background="@color/primaryLightColor"/>
-
-    <View
-        android:id="@+id/horizontal_divider"
-        android:layout_below="@id/vertical_divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="4dp"
-        android:background="@color/primaryLightColor"/>
-
     <TextView
-        android:id="@+id/lift_status_text"
+        android:id="@+id/lifts_open_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/horizontal_divider"
-        android:layout_marginLeft="8dp"
-        android:textSize="18sp"
-        android:text="Lifts:"
-        />
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:text="Lift Status:"/>
 
-    <android.support.v7.widget.RecyclerView
+    <ProgressBar
+        android:id="@+id/liftStatusBar"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_below="@id/lifts_open_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="8dp"
+        android:secondaryProgress="100"
+        android:progressTint="@color/statusGreen"
+        android:secondaryProgressTint="@color/statusRed">
+    </ProgressBar>
+
+     <android.support.v7.widget.RecyclerView
         android:id="@+id/lift_status"
-        android:layout_below="@id/lift_status_text"
+        android:layout_below="@id/liftStatusBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
