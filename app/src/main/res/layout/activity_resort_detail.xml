@@ -48,10 +48,26 @@
     android:layout_height="wrap_content"
     tools:context=".ResortDetailActivity">
 
+    <ImageView
+        android:id="@+id/hero_image"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:contentDescription="hero image"/>
+
+    <TextView
+        android:id="@+id/resort_open_closed_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hero_image"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"/>
+
     <TextView
         android:id="@+id/lifts_open_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/resort_open_closed_text"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:textSize="16sp"
