@@ -1,102 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/detail_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true" >
+        android:layout_alignParentTop="true">
 
         <TextView
             android:id="@+id/resort_name_title"
-            android:background="@color/primaryColor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="56dp"
-            android:paddingEnd="24dp"
-            android:textSize="24sp"
-            android:paddingTop="8dp"
+            android:background="@color/primaryColor"
             android:paddingBottom="8dp"
-            android:textColor="@android:color/white"/>
+            android:paddingEnd="24dp"
+            android:paddingStart="56dp"
+            android:paddingTop="8dp"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"/>
 
         <Button
             android:id="@+id/back_button"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="12dp"
-            android:gravity="center_vertical"
+            android:layout_marginTop="8dp"
             android:background="@drawable/ic_sharp_arrow_back_24px"
-            android:backgroundTint="@android:color/white"/>
+            android:backgroundTint="@android:color/white"
+            android:gravity="center_vertical"/>
 
     </RelativeLayout>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@id/detail_header"
-    android:scrollbars="none">
-
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".ResortDetailActivity">
-
-    <ImageView
-        android:id="@+id/hero_image"
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:contentDescription="hero image"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/detail_header"
+        android:scrollbars="none">
 
-    <TextView
-        android:id="@+id/resort_open_closed_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/hero_image"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textSize="18sp"/>
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".ResortDetailActivity">
 
-    <TextView
-        android:id="@+id/lifts_open_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/resort_open_closed_text"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:text="Lift Status:"/>
+            <ImageView
+                android:id="@+id/map_image"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"/>
 
-    <ProgressBar
-        android:id="@+id/liftStatusBar"
-        style="@android:style/Widget.ProgressBar.Horizontal"
-        android:layout_below="@id/lifts_open_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:elevation="8dp"
-        android:secondaryProgress="100"
-        android:progressTint="@color/statusGreen"
-        android:secondaryProgressTint="@color/statusRed">
-    </ProgressBar>
+            <TextView
+                android:id="@+id/resort_open_closed_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/map_image"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"/>
 
-     <android.support.v7.widget.RecyclerView
-        android:id="@+id/lift_status"
-        android:layout_below="@id/liftStatusBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
-</RelativeLayout>
+            <LinearLayout
+                android:id="@+id/conditions_container"
+                android:layout_below="@+id/resort_open_closed_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
 
-</ScrollView>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/current_conditions_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Current Conditions:"/>
+
+                    <ImageView
+                        android:id="@+id/current_weather_icon_image_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/current_conditions_text"
+                        android:layout_gravity="start"
+                        android:contentDescription="Current Weather Icon"
+                        android:minHeight="40dp"
+                        android:minWidth="40dp"
+                        android:src="@drawable/ic_weather_snowy"
+                        android:tint="@android:color/white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/current_weather_icon_image_view"
+                        android:layout_below="@id/current_conditions_text"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="9dp"
+                        android:text="34°"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/mountain_conditions_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mountain Conditions:"/>
+
+                    <ImageView
+                        android:id="@+id/current_snow_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_below="@id/mountain_conditions_text"
+                        android:contentDescription="Current Snow Icon"
+                        android:minHeight="40dp"
+                        android:minWidth="40dp"
+                        android:src="@drawable/ic_snowflake"
+                        android:tint="@android:color/white"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/current_snow_icon"
+                        android:layout_below="@id/mountain_conditions_text"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginStart="9dp"
+                        android:text="42 inches"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lifts_open_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/conditions_container"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Lift Status:"
+                android:textSize="16sp"/>
+
+            <ProgressBar
+                android:id="@+id/lift_Status_Bar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lifts_open_text"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:elevation="8dp"
+                android:progressTint="@color/statusGreen"
+                android:secondaryProgress="100"
+                android:secondaryProgressTint="@color/statusRed">
+            </ProgressBar>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/lift_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/lift_Status_Bar"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

@@ -1,16 +1,15 @@
 package hawaiianmoose.gnarlift
 
 import android.graphics.Color
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
 import com.squareup.phrase.Phrase
-import com.squareup.picasso.Picasso
 import data.Constants
 import data.ResortDataItemResponse
 import data.StaticResortDataItem
@@ -21,7 +20,10 @@ import io.reactivex.subjects.PublishSubject
 import android.text.style.ForegroundColorSpan
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
-
+import com.squareup.picasso.Picasso
+import data.Weather
+import kotlinx.android.synthetic.main.activity_resort_detail.*
+import utils.WeatherToIconConverter
 
 
 class ResortDetailActivity : AppCompatActivity() {
@@ -66,8 +68,6 @@ class ResortDetailActivity : AppCompatActivity() {
     }
 
     private fun bindLiftieData(liftieResortDataResponse: ResortDataItemResponse) {
-        val liftOpenBar = findViewById<ProgressBar>(R.id.liftStatusBar)
-        val heroImage = findViewById<ImageView>(R.id.hero_image)
         val openClosedText = findViewById<TextView>(R.id.resort_open_closed_text)
         val recycler = findViewById<RecyclerView>(R.id.lift_status)
         val viewManager = LinearLayoutManager(this.baseContext)
@@ -77,10 +77,18 @@ class ResortDetailActivity : AppCompatActivity() {
         recycler.adapter = viewAdapter
 
         setResortStatusText(liftieResortDataResponse, openClosedText)
+        setCurrentWeatherIcon(liftieResortDataResponse.weather, current_weather_icon_image_view)
 
+        Picasso.get().load(Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_resort_map_image_uri))
+                .put("lat", liftieResortDataResponse.ll?.get(1)).put("lon", liftieResortDataResponse.ll?.get(0))
+                .format().toString())).fit().into(map_image)
+        lift_Status_Bar.progress = liftieResortDataResponse.lifts?.stats?.percentage?.open?.toBigDecimal()?.toInt()!!
+    }
 
-        Picasso.get().load(staticData.imageUrl).fit().into(heroImage)
-        liftOpenBar.progress = liftieResortDataResponse.lifts?.stats?.percentage?.open?.toBigDecimal()?.toInt()!!
+    private fun setCurrentWeatherIcon(weather: Weather?, weatherIconImageView: ImageView) {
+        if (!weather?.text.isNullOrEmpty()) {
+            weatherIconImageView.setImageResource(WeatherToIconConverter.convertWeatherTextToIcon(weather!!.text!!))
+        }
     }
 
     private fun setResortStatusText(liftieResortDataResponse: ResortDataItemResponse, openClosedText: TextView) {
