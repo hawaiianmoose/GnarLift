@@ -51,7 +51,8 @@
             <ImageView
                 android:id="@+id/map_image"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"/>
+                android:layout_height="180dp"
+                android:contentDescription="@string/map_image_content_description"/>
 
             <TextView
                 android:id="@+id/resort_open_closed_text"
@@ -59,17 +60,18 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/map_image"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="12dp"
                 android:textSize="18sp"/>
-
 
             <LinearLayout
                 android:id="@+id/conditions_container"
-                android:layout_below="@+id/resort_open_closed_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginTop="8dp">
+                android:layout_below="@+id/resort_open_closed_text"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -82,7 +84,8 @@
                         android:id="@+id/current_conditions_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Current Conditions:"/>
+                        android:text="@string/current_conditions"
+                        android:textSize="18sp"/>
 
                     <ImageView
                         android:id="@+id/current_weather_icon_image_view"
@@ -90,20 +93,21 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/current_conditions_text"
                         android:layout_gravity="start"
-                        android:contentDescription="Current Weather Icon"
-                        android:minHeight="40dp"
-                        android:minWidth="40dp"
+                        android:contentDescription="@string/current_conditions_content_description"
+                        android:minHeight="60dp"
+                        android:minWidth="60dp"
                         android:src="@drawable/ic_weather_snowy"
                         android:tint="@android:color/white"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/current_weather_icon_image_view"
                         android:layout_below="@id/current_conditions_text"
-                        android:layout_marginTop="8dp"
                         android:layout_marginStart="9dp"
-                        android:text="34°"/>
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@id/current_weather_icon_image_view"
+                        android:text="34°"
+                        android:textSize="22sp"/>
 
                 </RelativeLayout>
 
@@ -117,28 +121,30 @@
                         android:id="@+id/mountain_conditions_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Mountain Conditions:"/>
+                        android:text="@string/mountain_conditions"
+                        android:textSize="18sp"/>
 
                     <ImageView
                         android:id="@+id/current_snow_icon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="start"
                         android:layout_below="@id/mountain_conditions_text"
-                        android:contentDescription="Current Snow Icon"
-                        android:minHeight="40dp"
-                        android:minWidth="40dp"
+                        android:layout_gravity="start"
+                        android:contentDescription="@string/mountain_conditions_content_description"
+                        android:minHeight="60dp"
+                        android:minWidth="60dp"
                         android:src="@drawable/ic_snowflake"
                         android:tint="@android:color/white"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/current_snow_icon"
                         android:layout_below="@id/mountain_conditions_text"
-                        android:layout_marginTop="8dp"
                         android:layout_marginStart="9dp"
-                        android:text="42 inches"/>
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@id/current_snow_icon"
+                        android:text="42''"
+                        android:textSize="22sp"/>
 
                 </RelativeLayout>
 
@@ -151,31 +157,51 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/conditions_container"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:text="Lift Status:"
-                android:textSize="16sp"/>
+                android:layout_marginTop="12dp"
+                android:text="@string/lift_status"
+                android:textSize="18sp"/>
 
-            <ProgressBar
-                android:id="@+id/lift_Status_Bar"
-                style="@android:style/Widget.ProgressBar.Horizontal"
-                android:layout_width="match_parent"
+            <RelativeLayout
+                android:id="@+id/status_bar_layout"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/lifts_open_text"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:elevation="8dp"
-                android:progressTint="@color/statusGreen"
-                android:secondaryProgress="100"
-                android:secondaryProgressTint="@color/statusRed">
-            </ProgressBar>
+                android:layout_below="@id/lifts_open_text">
+
+                <ProgressBar
+                    android:id="@+id/lift_Status_Bar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:elevation="8dp"
+                    android:progressTint="@color/statusGreen"
+                    android:secondaryProgress="100"
+                    android:secondaryProgressTint="@color/statusRed"/>
+
+                <TextView
+                    android:id="@+id/lift_percent_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@id/lift_Status_Bar"
+                    android:layout_alignEnd="@id/lift_Status_Bar"
+                    android:layout_alignStart="@id/lift_Status_Bar"
+                    android:layout_alignTop="@id/lift_Status_Bar"
+                    android:background="#00000000"
+                    android:elevation="9dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/lift_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/lift_Status_Bar"/>
+                android:layout_below="@id/status_bar_layout"/>
 
         </RelativeLayout>
 

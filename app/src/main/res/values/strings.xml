@@ -3,8 +3,6 @@
     <string name="nav_explore">Explore</string>
     <string name="nav_favorites">Favorites</string>
     <string name="info">Info</string>
-    <string name="resort_card_content_description">Resort Image</string>
-    <string name="favorite_resort_content_description">Favorite Resort Button</string>
     <string name="search_hint">Search Resorts…</string>
     <string name="toast_added">%1$s added to favorites</string>
     <string name="toast_removed">%1$s removed from favorites</string>
@@ -12,10 +10,19 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="lift_status">Lift Status</string>
+    <string name="mountain_conditions">Mountain Conditions</string>
+    <string name="current_conditions">Current Conditions</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
     <string name="TEMPLATE_resort_open_close">{resort} is&#160;</string>
     <string name="TEMPLATE_resort_map_image_uri">http://maps.google.com/maps/api/staticmap?center={lat},{lon}&amp;zoom=14&amp;size=600x260&amp;sensor=false&amp;maptype=terrain&amp;key=AIzaSyAo9N5X0MHn81Iyessyr13f9ulerUs-a-0</string>
+    <string name="TEMPLATE_lift_percent">{lift_percent}%</string>
     <string name="open">open</string>
     <string name="closed">closed</string>
+
+    <string name="current_conditions_content_description">Current Weather Conditions Icon</string>
+    <string name="mountain_conditions_content_description">Mountain Conditions Icon</string>
+    <string name="resort_card_content_description">Resort Image</string>
+    <string name="favorite_resort_content_description">Favorite Resort Button</string>
+    <string name="map_image_content_description">Local Map Image</string>
 
 </resources>

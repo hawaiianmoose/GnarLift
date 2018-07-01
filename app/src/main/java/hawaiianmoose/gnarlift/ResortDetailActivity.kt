@@ -80,9 +80,12 @@ class ResortDetailActivity : AppCompatActivity() {
         setCurrentWeatherIcon(liftieResortDataResponse.weather, current_weather_icon_image_view)
 
         Picasso.get().load(Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_resort_map_image_uri))
-                .put("lat", liftieResortDataResponse.ll?.get(1)).put("lon", liftieResortDataResponse.ll?.get(0))
+                .put("lat", liftieResortDataResponse.ll?.get(1))
+                .put("lon", liftieResortDataResponse.ll?.get(0))
                 .format().toString())).fit().into(map_image)
         lift_Status_Bar.progress = liftieResortDataResponse.lifts?.stats?.percentage?.open?.toBigDecimal()?.toInt()!!
+        lift_percent_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
+                .put("lift_percent",lift_Status_Bar.progress.toString()).format().toString()
     }
 
     private fun setCurrentWeatherIcon(weather: Weather?, weatherIconImageView: ImageView) {

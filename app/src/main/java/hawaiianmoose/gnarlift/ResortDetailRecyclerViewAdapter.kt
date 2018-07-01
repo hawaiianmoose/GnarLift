@@ -15,6 +15,8 @@ class ResortDetailRecyclerViewAdapter(val resortDataItemResponse: ResortDataItem
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         parentContext = parent.context
         val liftView = LayoutInflater.from(parentContext).inflate(R.layout.lift_view, parent, false) as LinearLayout
+        resortDataItemResponse.liftStatus?.sortBy { lift -> lift.name }
+
         return ViewHolder(liftView)
     }
 
