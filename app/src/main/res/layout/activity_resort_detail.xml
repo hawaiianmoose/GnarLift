@@ -54,20 +54,11 @@
                 android:layout_height="180dp"
                 android:contentDescription="@string/map_image_content_description"/>
 
-            <TextView
-                android:id="@+id/resort_open_closed_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/map_image"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="12dp"
-                android:textSize="18sp"/>
-
             <LinearLayout
                 android:id="@+id/conditions_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/resort_open_closed_text"
+                android:layout_below="@+id/map_image"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="12dp"
                 android:baselineAligned="false"
