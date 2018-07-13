@@ -15,14 +15,14 @@ class ResortDetailRecyclerViewAdapter(val resortDataItemResponse: ResortDataItem
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         parentContext = parent.context
         val liftView = LayoutInflater.from(parentContext).inflate(R.layout.lift_view, parent, false) as LinearLayout
-        resortDataItemResponse.liftStatus?.sortBy { lift -> lift.name }
+        resortDataItemResponse.liftStatus.sortBy { lift -> lift.name }
 
         return ViewHolder(liftView)
     }
 
     override fun getItemCount(): Int {
         return if (resortDataItemResponse.lifts?.status != null) {
-            resortDataItemResponse.lifts.status!!.size
+            resortDataItemResponse.lifts.status.size
         }
         else {
             0
@@ -30,13 +30,12 @@ class ResortDetailRecyclerViewAdapter(val resortDataItemResponse: ResortDataItem
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.liftView.lift_name_text.text = resortDataItemResponse.liftStatus?.get(position)?.name
+        holder.liftView.lift_name_text.text = resortDataItemResponse.liftStatus.get(position).name
 
-        if (!resortDataItemResponse.liftStatus?.get(position)!!.isOpen) {
+        if (!resortDataItemResponse.liftStatus.get(position).isOpen) {
             holder.liftView.status_icon.imageTintList = ColorStateList.valueOf(parentContext.getColor(R.color.statusRed))
         }
     }
-
 
     class ViewHolder(val liftView: LinearLayout) : RecyclerView.ViewHolder(liftView)
 }

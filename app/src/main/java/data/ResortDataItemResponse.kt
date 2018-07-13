@@ -3,144 +3,143 @@ package data
 import java.io.Serializable
 
 class ResortDataItemResponse: Serializable{
-    val id: String? = null
-    val name: String? = null
-    val href: String? = null
-    val ll: Array<String>? = null
-    val lifts: Lifts? = null
-    val twitter: Twitter? = null
-    val weather: Weather? = null
-    val webcams: Array<Webcams>? = null
-    val open: Boolean? = null
-    var liftStatus: MutableList<Lift>? = null
-
+    val id: String = String()
+    val name: String = String()
+    val href: String = String()
+    val ll: Array<String> = arrayOf()
+    val lifts: Lifts = Lifts()
+    val twitter: Twitter = Twitter()
+    val weather: Weather = Weather()
+    val webcams: Array<Webcams> = arrayOf()
+    val open: Boolean = false
+    var liftStatus: MutableList<Lift> = mutableListOf()
 }
 
 class Lifts {
-    var status: HashMap<String, String>? = null
-    var stats: Stats? = null
+    var status: HashMap<String, String> = hashMapOf()
+    var stats: Stats = Stats()
 }
 
-class Lift(var name: String, var isOpen: Boolean) {}
+class Lift(var name: String, var isOpen: Boolean)
 
 class Stats {
-    var open: String? = null
-    var scheduled: String? = null
-    var percentage: Percentage? = null
-    var hold: String? = null
-    var closed: String? = null
+    var open: String = String()
+    var scheduled: String = String()
+    var percentage: Percentage = Percentage()
+    var hold: String = String()
+    var closed: String = String()
 }
 
 class Percentage {
-    var open: String? = null
-    var scheduled: String? = null
-    var hold: String? = null
-    var closed: String? = null
+    var open: String = String()
+    var scheduled: String = String()
+    var hold: String = String()
+    var closed: String = String()
 }
 
 class Twitter {
-    var tweets: Array<Tweets>? = null
-    var user: String? = null
+    var tweets: Array<Tweets> = arrayOf()
+    var user: String = String()
 }
 
 class Tweets {
-    var extended_entities: Extended_entities? = null
-    var text: String? = null
-    var created_at: String? = null
-    var id_str: String? = null
-    var entities: Entities? = null
+    var extended_entities: Extended_entities = Extended_entities()
+    var text: String = String()
+    var created_at: String = String()
+    var id_str: String = String()
+    var entities: Entities = Entities()
 }
 
 class Extended_entities {
-    var media: Array<Media>? = null
+    var media: Array<Media> = arrayOf()
 }
 
 class Entities {
-    var symbols: Array<String>? = null
-    val urls: Array<Urls>? = null
-    var hashtags: Array<Hashtags>? = null
-    var media: Array<Media>? = null
-    var user_mentions: Array<UserMentions>? = null
+    var symbols: Array<String> = arrayOf()
+    val urls: Array<Urls> = arrayOf()
+    var hashtags: Array<Hashtags> = arrayOf()
+    var media: Array<Media> = arrayOf()
+    var user_mentions: Array<UserMentions> = arrayOf()
 }
 
 class Media {
-    var sizes: Sizes? = null
-    var id: String? = null
-    var media_url_https: String? = null
-    var media_url: String? = null
-    var expanded_url: String? = null
-    var indices: Array<String>? = null
-    var id_str: String? = null
-    var type: String? = null
-    var display_url: String? = null
-    var url: String? = null
+    var sizes: Sizes = Sizes()
+    var id: String = String()
+    var media_url_https: String = String()
+    var media_url: String = String()
+    var expanded_url: String = String()
+    var indices: Array<String> = arrayOf()
+    var id_str: String = String()
+    var type: String = String()
+    var display_url: String = String()
+    var url: String = String()
 }
 
 class Hashtags {
-    var text: String? = null
-    var indices: Array<String>? = null
+    var text: String = String()
+    var indices: Array<String> = arrayOf()
 }
 
 class Sizes {
-    var small: ImageSize? = null
-    var thumb: ImageSize? = null
-    var medium: ImageSize? = null
-    var large: ImageSize? = null
+    var small: ImageSize = ImageSize()
+    var thumb: ImageSize = ImageSize()
+    var medium: ImageSize = ImageSize()
+    var large: ImageSize = ImageSize()
 }
 
 class ImageSize {
-    var w: String? = null
-    var resize: String? = null
-    var h: String? = null
+    var w: String = String()
+    var resize: String = String()
+    var h: String = String()
 }
 
 class UserMentions {
-    var id: String? = null
-    var name: String? = null
-    var indices: Array<String>? = null
-    var screen_name: String? = null
-    var id_str: String? = null
+    var id: String = String()
+    var name: String = String()
+    var indices: Array<String> = arrayOf()
+    var screen_name: String = String()
+    var id_str: String = String()
 }
 
 class Weather {
-    var conditions: String? = null
-    var icon: Array<String>? = null
-    var text: String? = null
-    var snow: String? = null
-    var notice: Notice? = null
-    var date: String? = null
-    var temperature: Temperature? = null
+    var conditions: String = String()
+    var icon: Array<String> = arrayOf()
+    var text: String = String()
+    var snow: String = String()
+    var notice: Notice = Notice()
+    var date: String = String()
+    var temperature: Temperature = Temperature()
 }
 
 class Notice {
-    var site: String? = null
-    var width: String? = null
-    var img: String? = null
-    var href: String? = null
+    var site: String = String()
+    var width: String = String()
+    var img: String = String()
+    var href: String = String()
 }
 
 class Temperature {
-    var max: String? = null
+    var max: String = String()
 }
 
 class Webcams {
-    var source: String? = null
-    var name: String? = null
-    var image: String? = null
-    var notice: String? = null
-    var mobile: Mobile? = null
+    var source: String = String()
+    var name: String = String()
+    var image: String = String()
+    var notice: String = String()
+    var mobile: Mobile = Mobile()
 }
 
 class Mobile {
-    var source: String? = null
-    var name: String? = null
-    var image: String? = null
-    var notice: String? = null
+    var source: String = String()
+    var name: String = String()
+    var image: String = String()
+    var notice: String = String()
 }
 
 class Urls {
-    var expanded_url: String? = null
-    var indices: Array<String>? = null
-    var display_url: String? = null
-    var url: String? = null
+    var expanded_url: String = String()
+    var indices: Array<String> = arrayOf()
+    var display_url: String = String()
+    var url: String = String()
 }

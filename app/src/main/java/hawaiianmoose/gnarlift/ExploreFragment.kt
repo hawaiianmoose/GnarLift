@@ -49,7 +49,7 @@ class ExploreFragment : Fragment() {
         recycler.adapter = viewAdapter
 
         val searchView = view.findViewById(R.id.explore_search) as SearchView
-        searchView.setOnClickListener({ searchView.isIconified = false })
+        searchView.setOnClickListener { searchView.isIconified = false }
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {

@@ -41,13 +41,13 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
             viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         }
 
-        viewHolder.cardView.setOnClickListener({
+        viewHolder.cardView.setOnClickListener {
             val intent = Intent(parentContext, ResortDetailActivity::class.java).apply {
                 putExtra(Constants.favoritesData, filteredResortData[position])
             }
 
             startActivity(parentContext, intent, null)
-        })
+        }
 
         viewHolder.cardView.favorite_resort_button.setOnClickListener {
             if (favoritesData.contains(resortId)) {

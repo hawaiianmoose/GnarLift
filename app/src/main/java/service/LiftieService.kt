@@ -34,12 +34,11 @@ class LiftieService {
     }
 
     private fun buildLiftStatusObject(results: ResortDataItemResponse): ResortDataItemResponse {
-        results.liftStatus = mutableListOf()
         results.lifts?.status?.forEach { lift ->
             var boolVal = false
             if (lift.value == "open") { boolVal = true }
 
-            results.liftStatus!!.add(Lift(lift.key, boolVal))
+            results.liftStatus.add(Lift(lift.key, boolVal))
         }
 
         return results
