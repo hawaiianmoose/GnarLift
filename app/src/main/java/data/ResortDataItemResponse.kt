@@ -120,6 +120,7 @@ class Notice {
 
 class Temperature {
     var max: String = String()
+    var min: String = String()
 }
 
 class Webcams {

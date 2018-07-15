@@ -4,7 +4,7 @@ import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -17,6 +17,7 @@ import service.LiftieService
 import io.reactivex.disposables.Disposable
 import io.reactivex.subjects.PublishSubject
 import com.squareup.picasso.Picasso
+import data.Temperature
 import data.Weather
 import kotlinx.android.synthetic.main.activity_resort_detail.*
 import utils.WeatherToIconConverter
@@ -64,14 +65,14 @@ class ResortDetailActivity : AppCompatActivity() {
     }
 
     private fun bindLiftieData(liftieResortDataResponse: ResortDataItemResponse) {
-        val recycler = findViewById<RecyclerView>(R.id.lift_status)
         val viewManager = LinearLayoutManager(this.baseContext)
         val viewAdapter = ResortDetailRecyclerViewAdapter(liftieResortDataResponse)
-        recycler.setHasFixedSize(true)
-        recycler.layoutManager = viewManager
-        recycler.adapter = viewAdapter
+        lift_status.setHasFixedSize(true)
+        lift_status.layoutManager = viewManager
+        lift_status.adapter = viewAdapter
 
         setCurrentWeatherIcon(liftieResortDataResponse.weather, current_weather_icon_image_view)
+        setTemperatureText(liftieResortDataResponse.weather.temperature)
 
         Picasso.get().load(Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_resort_map_image_uri))
                 .put("lat", liftieResortDataResponse.ll.get(1))
@@ -82,13 +83,22 @@ class ResortDetailActivity : AppCompatActivity() {
                 .put("lift_percent",lift_Status_Bar.progress.toString()).format().toString()
     }
 
+    private fun setTemperatureText(temp: Temperature) {
+        temperature_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_high_temperature))
+                .put("temperature",temp.max).format().toString()
+
+        if (!temp.min.isEmpty()) {
+            low_temperature_text.visibility = View.VISIBLE
+            low_temperature_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_low_temperature))
+                    .put("temperature",temp.min).format().toString()
+        }
+    }
+
     private fun setCurrentWeatherIcon(weather: Weather, weatherIconImageView: ImageView) {
         if (!weather.text.isEmpty()) {
             weatherIconImageView.setImageResource(WeatherToIconConverter.convertWeatherTextToIcon(weather.text))
-        } else if (weather.icon.any()) {
-
         } else if (!weather.conditions.isEmpty()) {
-
+            weatherIconImageView.setImageResource(WeatherToIconConverter.convertWeatherTextToIcon(weather.conditions))
         }
     }
 

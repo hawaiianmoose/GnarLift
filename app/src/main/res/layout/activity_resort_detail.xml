@@ -87,17 +87,27 @@
                         android:contentDescription="@string/current_conditions_content_description"
                         android:minHeight="60dp"
                         android:minWidth="60dp"
-                        android:src="@drawable/ic_weather_snowy"
                         android:tint="@android:color/white"/>
 
                     <TextView
+                        android:id="@+id/temperature_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/current_conditions_text"
                         android:layout_marginStart="9dp"
                         android:layout_marginTop="8dp"
                         android:layout_toEndOf="@id/current_weather_icon_image_view"
-                        android:text="34°"
+                        android:textSize="22sp"/>
+
+                    <TextView
+                        android:id="@+id/low_temperature_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/temperature_text"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toEndOf="@id/current_weather_icon_image_view"
+                        android:visibility="gone"
                         android:textSize="22sp"/>
 
                 </RelativeLayout>

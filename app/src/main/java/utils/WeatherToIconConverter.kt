@@ -5,39 +5,33 @@ import hawaiianmoose.gnarlift.R
 object WeatherToIconConverter {
 
     fun convertWeatherTextToIcon(weatherText: String): Int {
-//        if (weatherText.contains("sun")) {
-//            return R.drawable.sunny
-//        }
-//        if (weatherText.contains("snow")) {
-//            return R.drawable.ic_weather_snowy
-//        }
+        val lowercaseWeatherText = weatherText.toLowerCase()
 
-//  ICONS
-//        sun
-//        cloud
-//        snow
-//        rain
-//        shower
-//        thunder
+        if (lowercaseWeatherText.contains("cloud") && lowercaseWeatherText.contains("sun")) {
+            return R.drawable.ic_weather_partlycloudy
+        }
+        if (lowercaseWeatherText.contains("sun") || lowercaseWeatherText.contains("clear")) {
+            return R.drawable.ic_weather_sunny
+        }
+        if (lowercaseWeatherText.contains("cloud")) {
+            return R.drawable.ic_weather_cloudy
+        }
+        if (lowercaseWeatherText.contains("snow")) {
+            return R.drawable.ic_weather_snowy
+        }
+        if (lowercaseWeatherText.contains("thunder")) {
+            return R.drawable.ic_weather_lightning
+        }
+        if (lowercaseWeatherText.contains("hail")) {
+            return R.drawable.ic_weather_hail
+        }
+        if (lowercaseWeatherText.contains("rain") || lowercaseWeatherText.contains("shower")) {
+            return R.drawable.ic_weather_pouring
+        }
+        if (lowercaseWeatherText.contains("mix")) {
+            return R.drawable.ic_weather_snowy_rainy
+        }
 
-    // CONDITIONS
-        //showers
-        //thunderstorms
-        //clear
-        //sunny
-        //snow
-
-
-
-        //EXAMPLE:
-        //"icon": [
-        //"icon-cloud",
-        //"icon-sunny"
-        //],
-        //"text": "",
-        //"conditions": "Mostly Sunny then Chance Showers And Thunderstorms",
-
-        return R.drawable.ic_weather_snowy //default should be cloud?
+        return R.drawable.ic_weather_partlycloudy
     }
-
 }

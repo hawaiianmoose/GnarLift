@@ -16,6 +16,8 @@
     <string name="TEMPLATE_resort_open_close">{resort} is&#160;</string>
     <string name="TEMPLATE_resort_map_image_uri">http://maps.google.com/maps/api/staticmap?center={lat},{lon}&amp;zoom=14&amp;size=600x260&amp;sensor=false&amp;maptype=terrain&amp;key=AIzaSyAo9N5X0MHn81Iyessyr13f9ulerUs-a-0</string>
     <string name="TEMPLATE_lift_percent">{lift_percent}%</string>
+    <string name="TEMPLATE_high_temperature">H: {temperature}°</string>
+    <string name="TEMPLATE_low_temperature">L: {temperature}°</string>
     <string name="open">open</string>
     <string name="closed">closed</string>
 
