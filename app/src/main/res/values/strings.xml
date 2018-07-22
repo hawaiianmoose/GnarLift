@@ -18,6 +18,8 @@
     <string name="TEMPLATE_lift_percent">{lift_percent}%</string>
     <string name="TEMPLATE_high_temperature">H: {temperature}°</string>
     <string name="TEMPLATE_low_temperature">L: {temperature}°</string>
+    <string name="TEMPLATE_map_nav">google.navigation:q={lat},{lon}</string>
+    <string name="TEMPLATE_snow_base_inches">{snow} base</string>
     <string name="open">open</string>
     <string name="closed">closed</string>
 

@@ -21,7 +21,7 @@ import data.Temperature
 import data.Weather
 import kotlinx.android.synthetic.main.activity_resort_detail.*
 import utils.WeatherToIconConverter
-
+import android.content.Intent
 
 class ResortDetailActivity : AppCompatActivity() {
 
@@ -70,14 +70,29 @@ class ResortDetailActivity : AppCompatActivity() {
         lift_status.setHasFixedSize(true)
         lift_status.layoutManager = viewManager
         lift_status.adapter = viewAdapter
+        lift_status.isNestedScrollingEnabled = false
 
         setCurrentWeatherIcon(liftieResortDataResponse.weather, current_weather_icon_image_view)
         setTemperatureText(liftieResortDataResponse.weather.temperature)
+
+        map_image.setOnClickListener {
+            val gmapsIntentUri = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_map_nav))
+                    .put("lat", liftieResortDataResponse.ll.get(1))
+                    .put("lon", liftieResortDataResponse.ll.get(0))
+                    .format().toString())
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmapsIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
+        }
 
         Picasso.get().load(Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_resort_map_image_uri))
                 .put("lat", liftieResortDataResponse.ll.get(1))
                 .put("lon", liftieResortDataResponse.ll.get(0))
                 .format().toString())).fit().into(map_image)
+
+        snow_base_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_snow_base_inches))
+                .put("snow",liftieResortDataResponse.weather.snow).format().toString()
+
         lift_Status_Bar.progress = liftieResortDataResponse.lifts.stats.percentage.open.toBigDecimal().toInt()
         lift_percent_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
                 .put("lift_percent",lift_Status_Bar.progress.toString()).format().toString()

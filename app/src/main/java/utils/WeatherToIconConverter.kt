@@ -7,7 +7,7 @@ object WeatherToIconConverter {
     fun convertWeatherTextToIcon(weatherText: String): Int {
         val lowercaseWeatherText = weatherText.toLowerCase()
 
-        if (lowercaseWeatherText.contains("cloud") && lowercaseWeatherText.contains("sun")) {
+        if (lowercaseWeatherText.contains("cloud") && lowercaseWeatherText.contains("partly")) {
             return R.drawable.ic_weather_partlycloudy
         }
         if (lowercaseWeatherText.contains("sun") || lowercaseWeatherText.contains("clear")) {

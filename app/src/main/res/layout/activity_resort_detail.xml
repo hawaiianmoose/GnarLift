@@ -138,17 +138,16 @@
                         android:tint="@android:color/white"/>
 
                     <TextView
+                        android:id="@+id/snow_base_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/mountain_conditions_text"
                         android:layout_marginStart="9dp"
                         android:layout_marginTop="8dp"
                         android:layout_toEndOf="@id/current_snow_icon"
-                        android:text="42''"
                         android:textSize="22sp"/>
 
                 </RelativeLayout>
-
 
             </LinearLayout>
 
