@@ -74,6 +74,7 @@ class ResortDetailActivity : AppCompatActivity() {
 
         setCurrentWeatherIcon(liftieResortDataResponse.weather, current_weather_icon_image_view)
         setTemperatureText(liftieResortDataResponse.weather.temperature)
+        setupTwitter(liftieResortDataResponse)
 
         map_image.setOnClickListener {
             val gmapsIntentUri = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_map_nav))
@@ -96,6 +97,17 @@ class ResortDetailActivity : AppCompatActivity() {
         lift_Status_Bar.progress = liftieResortDataResponse.lifts.stats.percentage.open.toBigDecimal().toInt()
         lift_percent_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
                 .put("lift_percent",lift_Status_Bar.progress.toString()).format().toString()
+    }
+
+    private fun setupTwitter(liftieResortDataResponse: ResortDataItemResponse) {
+        val latestTweet = liftieResortDataResponse.twitter.tweets.first()
+
+        tweet_text_view.text = latestTweet.text
+        if (latestTweet.entities.media.first().media_url.isEmpty()) {
+            tweet_image_view.visibility = View.GONE
+        } else {
+            Picasso.get().load(latestTweet.entities.media.first().media_url).fit().into(tweet_image_view)
+        }
     }
 
     private fun setTemperatureText(temp: Temperature) {
