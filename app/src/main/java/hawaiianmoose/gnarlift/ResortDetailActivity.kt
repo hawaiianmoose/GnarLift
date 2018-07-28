@@ -22,6 +22,7 @@ import data.Weather
 import kotlinx.android.synthetic.main.activity_resort_detail.*
 import utils.WeatherToIconConverter
 import android.content.Intent
+import android.text.Html
 
 class ResortDetailActivity : AppCompatActivity() {
 
@@ -75,7 +76,20 @@ class ResortDetailActivity : AppCompatActivity() {
         setCurrentWeatherIcon(liftieResortDataResponse.weather, current_weather_icon_image_view)
         setTemperatureText(liftieResortDataResponse.weather.temperature)
         setupTwitter(liftieResortDataResponse)
+        setupMap(liftieResortDataResponse)
+        setupLifts(liftieResortDataResponse)
 
+        snow_base_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_snow_base_inches))
+                .put("snow",liftieResortDataResponse.weather.snow).format().toString()
+    }
+
+    private fun setupLifts(liftieResortDataResponse: ResortDataItemResponse) {
+        lift_Status_Bar.progress = liftieResortDataResponse.lifts.stats.percentage.open.toBigDecimal().toInt()
+        lift_percent_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
+                .put("lift_percent",lift_Status_Bar.progress.toString()).format().toString()
+    }
+
+    private fun setupMap(liftieResortDataResponse: ResortDataItemResponse) {
         map_image.setOnClickListener {
             val gmapsIntentUri = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_map_nav))
                     .put("lat", liftieResortDataResponse.ll.get(1))
@@ -90,23 +104,24 @@ class ResortDetailActivity : AppCompatActivity() {
                 .put("lat", liftieResortDataResponse.ll.get(1))
                 .put("lon", liftieResortDataResponse.ll.get(0))
                 .format().toString())).fit().into(map_image)
-
-        snow_base_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_snow_base_inches))
-                .put("snow",liftieResortDataResponse.weather.snow).format().toString()
-
-        lift_Status_Bar.progress = liftieResortDataResponse.lifts.stats.percentage.open.toBigDecimal().toInt()
-        lift_percent_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
-                .put("lift_percent",lift_Status_Bar.progress.toString()).format().toString()
     }
 
     private fun setupTwitter(liftieResortDataResponse: ResortDataItemResponse) {
         val latestTweet = liftieResortDataResponse.twitter.tweets.first()
 
-        tweet_text_view.text = latestTweet.text
+        tweet_text_view.text = Html.fromHtml(latestTweet.text)
         if (latestTweet.entities.media.first().media_url.isEmpty()) {
             tweet_image_view.visibility = View.GONE
         } else {
-            Picasso.get().load(latestTweet.entities.media.first().media_url).fit().into(tweet_image_view)
+            Picasso.get().load(latestTweet.entities.media.first().media_url).fit().centerCrop().into(tweet_image_view)
+        }
+
+        tweet_card_view.setOnClickListener {
+            val twitterDeeplink = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_twitter_deeplink))
+                    .put("user", liftieResortDataResponse.twitter.user)
+                    .format().toString())
+            val intent = Intent(Intent.ACTION_VIEW, twitterDeeplink)
+            startActivity(intent)
         }
     }
 

@@ -10,5 +10,6 @@
     <color name="secondaryTextColor">#000000</color>
     <color name="favoritesColor">#ffff8d</color>
     <color name="statusGreen">#00c853</color>
-    <color name="statusRed" >#d50000</color>
+    <color name="statusRed">#d50000</color>
+    <color name="darkBlue">#01579b</color>
 </resources>

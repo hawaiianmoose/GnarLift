@@ -21,6 +21,7 @@
     <string name="TEMPLATE_low_temperature">L: {temperature}°</string>
     <string name="TEMPLATE_map_nav">google.navigation:q={lat},{lon}</string>
     <string name="TEMPLATE_snow_base_inches">{snow} base</string>
+    <string name="TEMPLATE_twitter_deeplink">twitter://user?screen_name={user}</string>
     <string name="open">open</string>
     <string name="closed">closed</string>
 
