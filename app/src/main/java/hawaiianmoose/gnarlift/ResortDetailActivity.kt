@@ -78,15 +78,26 @@ class ResortDetailActivity : AppCompatActivity() {
         setupTwitter(liftieResortDataResponse)
         setupMap(liftieResortDataResponse)
         setupLifts(liftieResortDataResponse)
+        setupPhone()
 
         snow_base_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_snow_base_inches))
                 .put("snow",liftieResortDataResponse.weather.snow).format().toString()
     }
 
+    private fun setupPhone() {
+        resort_phone.text = staticData.phone
+        resort_phone.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_phone_dialer))
+                    .put("phone_number", staticData.phone).format().toString())
+            startActivity(intent)
+        }
+    }
+
     private fun setupLifts(liftieResortDataResponse: ResortDataItemResponse) {
         lift_Status_Bar.progress = liftieResortDataResponse.lifts.stats.percentage.open.toBigDecimal().toInt()
         lift_percent_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
-                .put("lift_percent",lift_Status_Bar.progress.toString()).format().toString()
+                .put("lift_percent", lift_Status_Bar.progress.toString()).format().toString()
     }
 
     private fun setupMap(liftieResortDataResponse: ResortDataItemResponse) {

@@ -22,6 +22,7 @@
     <string name="TEMPLATE_map_nav">google.navigation:q={lat},{lon}</string>
     <string name="TEMPLATE_snow_base_inches">{snow} base</string>
     <string name="TEMPLATE_twitter_deeplink">twitter://user?screen_name={user}</string>
+    <string name="TEMPLATE_phone_dialer">tel:{phone_number}</string>
     <string name="open">open</string>
     <string name="closed">closed</string>
 
@@ -31,5 +32,6 @@
     <string name="favorite_resort_content_description">Favorite Resort Button</string>
     <string name="map_image_content_description">Local Map Image</string>
     <string name="twitter_image_content_description">Latest Twitter Image</string>
+    <string name="phone_icon_content_description">Phone Icon</string>
 
 </resources>

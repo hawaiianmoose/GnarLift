@@ -249,7 +249,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:contentDescription="@string/map_image_content_description"
-                android:layout_below="@+id/resort_information"/>
+                android:layout_below="@+id/resort_information"
+                />
+
+            <ImageView
+                android:id="@+id/phone_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_below="@id/map_image"
+                android:src="@drawable/ic_sharp_phone_24px"
+                android:tint="@color/primaryDarkColor"
+                android:contentDescription="@string/phone_icon_content_description"/>
+
+            <TextView
+                android:id="@+id/resort_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/phone_icon"
+                android:layout_below="@id/map_image"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="12dp"
+                android:textSize="18sp"/>
 
         </RelativeLayout>
 
