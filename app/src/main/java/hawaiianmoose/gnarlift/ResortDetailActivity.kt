@@ -121,7 +121,7 @@ class ResortDetailActivity : AppCompatActivity() {
         val latestTweet = liftieResortDataResponse.twitter.tweets.first()
 
         tweet_text_view.text = Html.fromHtml(latestTweet.text)
-        if (latestTweet.entities.media.first().media_url.isEmpty()) {
+        if (!latestTweet.entities.media.any() || latestTweet.entities.media.first().media_url.isEmpty()) {
             tweet_image_view.visibility = View.GONE
         } else {
             Picasso.get().load(latestTweet.entities.media.first().media_url).fit().centerCrop().into(tweet_image_view)
