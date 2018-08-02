@@ -1,73 +1,50 @@
 package hawaiianmoose.gnarlift
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
-import android.animation.ObjectAnimator
+import android.content.Intent
 import android.net.Uri
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Html
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.phrase.Phrase
+import com.squareup.picasso.Picasso
 import data.Constants
 import data.ResortDataItemResponse
 import data.StaticResortDataItem
-import io.reactivex.Observer
-import service.LiftieService
-import io.reactivex.disposables.Disposable
-import io.reactivex.subjects.PublishSubject
-import com.squareup.picasso.Picasso
 import data.Temperature
 import data.Weather
 import kotlinx.android.synthetic.main.activity_resort_detail.*
 import utils.WeatherToIconConverter
-import android.content.Intent
-import android.os.Handler
-import android.text.Html
 
 class ResortDetailActivity : AppCompatActivity() {
 
     private var staticData: StaticResortDataItem = StaticResortDataItem()
+    private var liftieData: ResortDataItemResponse = ResortDataItemResponse()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left)
         setContentView(R.layout.activity_resort_detail)
         staticData = intent.extras[Constants.favoritesData] as StaticResortDataItem
+        liftieData = intent.extras[Constants.resortDetailData] as ResortDataItemResponse
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
         bindStaticData()
-        getLiftieDataForResort()
-        resort_scroll_view.visibility = View.GONE
+        bindLiftieData(liftieData)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right)
     }
 
     private fun bindStaticData(){
         val textView = findViewById<TextView>(R.id.resort_name_title)
         textView.text = staticData.name
-    }
-
-    private fun getLiftieDataForResort() {
-        val liftieSubject = PublishSubject.create<ResortDataItemResponse>()
-        liftieSubject.subscribe(object : Observer<ResortDataItemResponse> {
-            override fun onSubscribe(d: Disposable) {}
-
-            override fun onNext(liftieResortDataResponse: ResortDataItemResponse) {
-                bindLiftieData(liftieResortDataResponse)
-                playLoadingAnimationTransition()
-            }
-
-            override fun onError(e: Throwable) {
-
-            }
-
-            override fun onComplete() {
-
-            }
-        })
-
-        staticData.resortId?.let { LiftieService().fetchResortInfo(it, liftieSubject) }
     }
 
     private fun bindLiftieData(liftieResortDataResponse: ResortDataItemResponse) {
@@ -158,24 +135,5 @@ class ResortDetailActivity : AppCompatActivity() {
         } else if (!weather.conditions.isEmpty()) {
             weatherIconImageView.setImageResource(WeatherToIconConverter.convertWeatherTextToIcon(weather.conditions))
         }
-    }
-
-    private fun playLoadingAnimationTransition() {
-        val loadingFadeAnimator = ObjectAnimator.ofFloat(loading_screen, "alpha", 1f, 0f)
-        loadingFadeAnimator.duration = 300
-        loadingFadeAnimator.start()
-
-        Handler().postDelayed({
-            val resortDetailFadeAnimator = ObjectAnimator.ofFloat(resort_scroll_view, "alpha", 0f, 1f)
-            resortDetailFadeAnimator.duration = 300
-            resort_scroll_view.visibility = View.VISIBLE
-            resortDetailFadeAnimator.start()
-        }, 100)
-
-        loadingFadeAnimator.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
-                loading_screen.visibility = View.GONE
-            }
-        })
     }
 }

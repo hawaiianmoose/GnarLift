@@ -2,7 +2,7 @@ package data
 
 import java.io.Serializable
 
-class ResortDataItemResponse: Serializable{
+class ResortDataItemResponse: Serializable {
     val id: String = String()
     val name: String = String()
     val href: String = String()
@@ -15,14 +15,14 @@ class ResortDataItemResponse: Serializable{
     var liftStatus: MutableList<Lift> = mutableListOf()
 }
 
-class Lifts {
+class Lifts: Serializable {
     var status: HashMap<String, String> = hashMapOf()
     var stats: Stats = Stats()
 }
 
-class Lift(var name: String, var isOpen: Boolean)
+class Lift(var name: String, var isOpen: Boolean) : Serializable
 
-class Stats {
+class Stats: Serializable {
     var open: String = String()
     var scheduled: String = String()
     var percentage: Percentage = Percentage()
@@ -30,19 +30,19 @@ class Stats {
     var closed: String = String()
 }
 
-class Percentage {
+class Percentage: Serializable {
     var open: String = String()
     var scheduled: String = String()
     var hold: String = String()
     var closed: String = String()
 }
 
-class Twitter {
+class Twitter: Serializable {
     var tweets: Array<Tweets> = arrayOf()
     var user: String = String()
 }
 
-class Tweets {
+class Tweets: Serializable {
     var extended_entities: Extended_entities = Extended_entities()
     var text: String = String()
     var created_at: String = String()
@@ -50,11 +50,11 @@ class Tweets {
     var entities: Entities = Entities()
 }
 
-class Extended_entities {
+class Extended_entities: Serializable {
     var media: Array<Media> = arrayOf()
 }
 
-class Entities {
+class Entities: Serializable {
     var symbols: Array<String> = arrayOf()
     val urls: Array<Urls> = arrayOf()
     var hashtags: Array<Hashtags> = arrayOf()
@@ -62,7 +62,7 @@ class Entities {
     var user_mentions: Array<UserMentions> = arrayOf()
 }
 
-class Media {
+class Media: Serializable {
     var sizes: Sizes = Sizes()
     var id: String = String()
     var media_url_https: String = String()
@@ -75,25 +75,25 @@ class Media {
     var url: String = String()
 }
 
-class Hashtags {
+class Hashtags: Serializable {
     var text: String = String()
     var indices: Array<String> = arrayOf()
 }
 
-class Sizes {
+class Sizes: Serializable {
     var small: ImageSize = ImageSize()
     var thumb: ImageSize = ImageSize()
     var medium: ImageSize = ImageSize()
     var large: ImageSize = ImageSize()
 }
 
-class ImageSize {
+class ImageSize: Serializable {
     var w: String = String()
     var resize: String = String()
     var h: String = String()
 }
 
-class UserMentions {
+class UserMentions: Serializable {
     var id: String = String()
     var name: String = String()
     var indices: Array<String> = arrayOf()
@@ -101,7 +101,7 @@ class UserMentions {
     var id_str: String = String()
 }
 
-class Weather {
+class Weather: Serializable {
     var conditions: String = String()
     var icon: Array<String> = arrayOf()
     var text: String = String()
@@ -111,19 +111,19 @@ class Weather {
     var temperature: Temperature = Temperature()
 }
 
-class Notice {
+class Notice: Serializable {
     var site: String = String()
     var width: String = String()
     var img: String = String()
     var href: String = String()
 }
 
-class Temperature {
+class Temperature: Serializable {
     var max: String = String()
     var min: String = String()
 }
 
-class Webcams {
+class Webcams: Serializable {
     var source: String = String()
     var name: String = String()
     var image: String = String()
@@ -131,14 +131,14 @@ class Webcams {
     var mobile: Mobile = Mobile()
 }
 
-class Mobile {
+class Mobile: Serializable {
     var source: String = String()
     var name: String = String()
     var image: String = String()
     var notice: String = String()
 }
 
-class Urls {
+class Urls: Serializable {
     var expanded_url: String = String()
     var indices: Array<String> = arrayOf()
     var display_url: String = String()

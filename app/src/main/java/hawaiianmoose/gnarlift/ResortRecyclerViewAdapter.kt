@@ -1,14 +1,12 @@
 package hawaiianmoose.gnarlift
 
 import android.content.Context
-import android.content.Intent
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.LinearLayout
 import android.widget.Toast
 import com.squareup.picasso.Picasso
 import data.StaticResortDataItem
@@ -16,17 +14,21 @@ import data.StaticResortDataItemResponse
 import kotlinx.android.synthetic.main.resort_card_view.view.*
 import service.FavoriteService
 import android.view.animation.AnimationUtils
-import data.Constants
 import android.widget.ImageView
+import android.widget.RelativeLayout
+import utils.LiftieServiceUtil
 
 class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), Filterable {
     lateinit var parentContext: Context
+    lateinit var parentView: ViewGroup
+    var isLoading = false
     var staticResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts
     var filteredResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResortRecyclerViewAdapter.ViewHolder {
         parentContext = parent.context
-        val cardView = LayoutInflater.from(parentContext).inflate(R.layout.resort_card_view, parent, false) as LinearLayout
+        parentView = parent
+        val cardView = LayoutInflater.from(parentContext).inflate(R.layout.resort_card_view, parent, false) as RelativeLayout
         return ViewHolder(cardView)
     }
 
@@ -42,11 +44,12 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
         }
 
         viewHolder.cardView.setOnClickListener {
-            val intent = Intent(parentContext, ResortDetailActivity::class.java).apply {
-                putExtra(Constants.favoritesData, filteredResortData[position])
+            if (!isLoading) {
+                isLoading = true
+                viewHolder.cardView.resort_card_view.alpha = 0.5f
+                viewHolder.cardView.loading_animation_view.visibility = View.VISIBLE
+                LiftieServiceUtil.getLiftieDataForResort(filteredResortData[position], viewHolder, parentContext, this)
             }
-
-            startActivity(parentContext, intent, null)
         }
 
         viewHolder.cardView.favorite_resort_button.setOnClickListener {
@@ -100,7 +103,7 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
     private fun addFavoriteResort(viewHolder: ViewHolder, resortId: String, resortName: String) {
         viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         FavoriteService.getInstance(parentContext).saveFavorite(resortId)
-        favoritesData.add(resortId ?: "")
+        favoritesData.add(resortId)
         Toast.makeText(parentContext, makeToast(resortName, R.string.toast_added), Toast.LENGTH_SHORT).show()
     }
 
@@ -111,5 +114,5 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
         Toast.makeText(parentContext, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_SHORT).show()
     }
 
-    class ViewHolder(val cardView: LinearLayout) : RecyclerView.ViewHolder(cardView)
+    class ViewHolder(val cardView: RelativeLayout) : RecyclerView.ViewHolder(cardView)
 }

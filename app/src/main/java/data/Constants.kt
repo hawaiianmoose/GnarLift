@@ -5,5 +5,6 @@ object Constants {
     val favoriteResorts = "favorite_resorts"
     val staticResortData = "StaticResortData"
     val favoritesData = "FavoritesData"
+    val resortDetailData = "ResortDetailData"
     val liftieEndpoint = "https://liftie.info/api/resort/"
 }

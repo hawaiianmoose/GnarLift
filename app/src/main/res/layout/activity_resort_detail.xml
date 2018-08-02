@@ -48,7 +48,8 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:context=".ResortDetailActivity">
+            tools:context=".ResortDetailActivity"
+            android:focusableInTouchMode="true">
 
             <android.support.v7.widget.CardView
                 android:id="@+id/tweet_card_view"
@@ -287,19 +288,19 @@
 
     </ScrollView>
 
-    <FrameLayout
-        android:id="@+id/loading_screen"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="@color/primaryDarkColor">
+    <!--<FrameLayout-->
+        <!--android:id="@+id/loading_screen"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:backgroundTint="@color/primaryDarkColor">-->
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:lottie_autoPlay="true"
-            app:lottie_loop="true"
-            android:layout_gravity="center"
-            app:lottie_fileName="glow_loading.json"/>
-    </FrameLayout>
+        <!--<com.airbnb.lottie.LottieAnimationView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:lottie_autoPlay="true"-->
+            <!--app:lottie_loop="true"-->
+            <!--android:layout_gravity="center"-->
+            <!--app:lottie_fileName="glow_loading.json"/>-->
+    <!--</FrameLayout>-->
 
 </RelativeLayout>
