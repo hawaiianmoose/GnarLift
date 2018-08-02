@@ -36,6 +36,7 @@
     </RelativeLayout>
 
     <ScrollView
+        android:id="@+id/resort_scroll_view"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -285,5 +286,20 @@
         </RelativeLayout>
 
     </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/loading_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:backgroundTint="@color/primaryDarkColor">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_gravity="center"
+            app:lottie_fileName="glow_loading.json"/>
+    </FrameLayout>
 
 </RelativeLayout>

@@ -1,5 +1,8 @@
 package hawaiianmoose.gnarlift
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
+import android.animation.ObjectAnimator
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -22,6 +25,7 @@ import data.Weather
 import kotlinx.android.synthetic.main.activity_resort_detail.*
 import utils.WeatherToIconConverter
 import android.content.Intent
+import android.os.Handler
 import android.text.Html
 
 class ResortDetailActivity : AppCompatActivity() {
@@ -34,9 +38,9 @@ class ResortDetailActivity : AppCompatActivity() {
         staticData = intent.extras[Constants.favoritesData] as StaticResortDataItem
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
-
         bindStaticData()
         getLiftieDataForResort()
+        resort_scroll_view.visibility = View.GONE
     }
 
     private fun bindStaticData(){
@@ -51,6 +55,7 @@ class ResortDetailActivity : AppCompatActivity() {
 
             override fun onNext(liftieResortDataResponse: ResortDataItemResponse) {
                 bindLiftieData(liftieResortDataResponse)
+                playLoadingAnimationTransition()
             }
 
             override fun onError(e: Throwable) {
@@ -155,4 +160,22 @@ class ResortDetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun playLoadingAnimationTransition() {
+        val loadingFadeAnimator = ObjectAnimator.ofFloat(loading_screen, "alpha", 1f, 0f)
+        loadingFadeAnimator.duration = 300
+        loadingFadeAnimator.start()
+
+        Handler().postDelayed({
+            val resortDetailFadeAnimator = ObjectAnimator.ofFloat(resort_scroll_view, "alpha", 0f, 1f)
+            resortDetailFadeAnimator.duration = 300
+            resort_scroll_view.visibility = View.VISIBLE
+            resortDetailFadeAnimator.start()
+        }, 100)
+
+        loadingFadeAnimator.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                loading_screen.visibility = View.GONE
+            }
+        })
+    }
 }
