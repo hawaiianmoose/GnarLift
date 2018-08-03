@@ -35,6 +35,30 @@
       "name": "Alta",
       "phone": "801-359-1078",
       "imageUrl": "https://i.imgur.com/7aUSW9z.jpg"
+    },
+    {
+      "resortId": "alpine",
+      "name": "Alpine Meadows",
+      "phone": "1-800-403-0206",
+      "imageUrl": "https://i.imgur.com/GtmDL1P.jpg"
+    },
+    {
+      "resortId": "alyeska",
+      "name": "Alyeska",
+      "phone": "907-754-2111",
+      "imageUrl": "https://i.imgur.com/Cy0u6mC.jpg"
+    },
+    {
+      "resortId": "angel-fire",
+      "name": "Angel Fire",
+      "phone": "844-218-4107",
+      "imageUrl": "https://i.imgur.com/mH9SmpH.jpg"
+    },
+    {
+      "resortId": "aspen-highlands",
+      "name": "Aspen Highlands",
+      "phone": "800-525-6200",
+      "imageUrl": "https://i.imgur.com/jsnafro.jpg"
     }
   ]
 }

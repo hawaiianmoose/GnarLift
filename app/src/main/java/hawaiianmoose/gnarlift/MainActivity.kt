@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun openDefaultLandingPage() = if (favoritesData.size > 1) {
+    private fun openDefaultLandingPage() = if (favoritesData.size > 0) {
         openFavoritesPage()
         defaultHomeId = R.id.navigation_favorites
         bottomNavBar.selectedItemId = defaultHomeId

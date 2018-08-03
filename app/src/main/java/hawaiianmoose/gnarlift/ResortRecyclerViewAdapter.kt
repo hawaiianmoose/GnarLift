@@ -39,6 +39,8 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
 
         if (favoritesData.contains(filteredResortData[position].resortId)) {
             viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
+        } else {
+            viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_border_24px)
         }
 
         viewHolder.cardView.setOnClickListener {
