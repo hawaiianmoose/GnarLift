@@ -16,9 +16,9 @@ import kotlinx.android.synthetic.main.resort_card_view.view.*
 import service.FavoriteService
 import utils.LiftieServiceUtil
 
-class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>() {
+class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), BaseResortRecyclerAdapter {
+    override var isLoading: Boolean = false
     lateinit var parentContext: Context
-    var isLoading = false
     var favoritesResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts.filter { r -> favoritesData.contains(r.resortId) }.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResortRecyclerViewAdapter.ViewHolder {

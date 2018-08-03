@@ -21,7 +21,7 @@ class ResortDetailRecyclerViewAdapter(val resortDataItemResponse: ResortDataItem
     }
 
     override fun getItemCount(): Int {
-        return if (resortDataItemResponse.lifts?.status != null) {
+        return if (resortDataItemResponse.lifts.status.isNotEmpty()) {
             resortDataItemResponse.lifts.status.size
         }
         else {

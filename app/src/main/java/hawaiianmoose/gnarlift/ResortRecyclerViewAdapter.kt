@@ -18,16 +18,14 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import utils.LiftieServiceUtil
 
-class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), Filterable {
+class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), Filterable, BaseResortRecyclerAdapter {
+    override var isLoading: Boolean = false
     lateinit var parentContext: Context
-    lateinit var parentView: ViewGroup
-    var isLoading = false
     var staticResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts
     var filteredResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResortRecyclerViewAdapter.ViewHolder {
         parentContext = parent.context
-        parentView = parent
         val cardView = LayoutInflater.from(parentContext).inflate(R.layout.resort_card_view, parent, false) as RelativeLayout
         return ViewHolder(cardView)
     }
