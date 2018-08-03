@@ -22,9 +22,8 @@
     <string name="TEMPLATE_map_nav">google.navigation:q={lat},{lon}</string>
     <string name="TEMPLATE_snow_base_inches">{snow} base</string>
     <string name="TEMPLATE_twitter_deeplink">twitter://user?screen_name={user}</string>
+    <string name="TEMPLATE_twitter_handle">@{twitter_handle}:&#160;</string>
     <string name="TEMPLATE_phone_dialer">tel:{phone_number}</string>
-    <string name="open">open</string>
-    <string name="closed">closed</string>
 
     <string name="current_conditions_content_description">Current Weather Conditions Icon</string>
     <string name="mountain_conditions_content_description">Mountain Conditions Icon</string>

@@ -1,11 +1,15 @@
 package hawaiianmoose.gnarlift
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -19,6 +23,9 @@ import data.Temperature
 import data.Weather
 import kotlinx.android.synthetic.main.activity_resort_detail.*
 import utils.WeatherToIconConverter
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class ResortDetailActivity : AppCompatActivity() {
 
@@ -99,10 +106,21 @@ class ResortDetailActivity : AppCompatActivity() {
                 .format().toString())).fit().into(map_image)
     }
 
+    @SuppressLint("NewApi")
     private fun setupTwitter(liftieResortDataResponse: ResortDataItemResponse) {
         val latestTweet = liftieResortDataResponse.twitter.tweets.first()
+        val stringBuilder = SpannableStringBuilder()
+        val twitterHandle = SpannableString(Phrase.from(resources.getString(R.string.TEMPLATE_twitter_handle))
+                .put("twitter_handle", liftieResortDataResponse.twitter.user).format().toString())
+        twitterHandle.setSpan(ForegroundColorSpan(resources.getColor(R.color.tweet_color)), 0, twitterHandle.length, 0)
+        stringBuilder.append(twitterHandle)
+        stringBuilder.append(Html.fromHtml(latestTweet.text))
+        tweet_text_view.setText(stringBuilder, TextView.BufferType.SPANNABLE)
 
-        tweet_text_view.text = Html.fromHtml(latestTweet.text)
+        val formatter = DateTimeFormatter.ofPattern("eee MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH)
+        val date = LocalDate.parse(latestTweet.created_at, formatter)
+        tweet_date_text_view.text = date.format(DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH))
+
         if (!latestTweet.entities.media.any() || latestTweet.entities.media.first().media_url.isEmpty()) {
             tweet_image_view.visibility = View.GONE
         } else {
@@ -110,7 +128,7 @@ class ResortDetailActivity : AppCompatActivity() {
         }
 
         tweet_card_view.setOnClickListener {
-            val twitterDeeplink = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_twitter_deeplink))
+            val twitterDeeplink = Uri.parse(Phrase.from(resources.getString(R.string.TEMPLATE_twitter_deeplink))
                     .put("user", liftieResortDataResponse.twitter.user)
                     .format().toString())
             val intent = Intent(Intent.ACTION_VIEW, twitterDeeplink)

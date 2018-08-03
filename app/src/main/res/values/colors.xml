@@ -12,4 +12,5 @@
     <color name="statusGreen">#00c853</color>
     <color name="statusRed">#d50000</color>
     <color name="darkBlue">#01579b</color>
+    <color name="tweet_color">#1da1f2</color>
 </resources>

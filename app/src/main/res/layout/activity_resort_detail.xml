@@ -69,6 +69,7 @@
                         android:layout_height="180dp"/>
 
                     <ImageView
+                        android:id="@+id/tweet_logo"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:src="@drawable/ic_twitter_logo_blue"
@@ -78,9 +79,22 @@
                     <TextView
                         android:id="@+id/tweet_text_view"
                         android:layout_below="@+id/tweet_image_view"
-                        android:layout_margin="8dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginBottom="28dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
+
+                    <TextView
+                        android:id="@+id/tweet_date_text_view"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:paddingEnd="32dp"
+                        android:paddingBottom="8dp"
+                        android:textSize="12sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
                 </RelativeLayout>
 
