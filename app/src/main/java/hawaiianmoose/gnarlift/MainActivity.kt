@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         initializeBottomNavBar()
         loadStaticResortData()
         loadFavoritesData()
-
         openDefaultLandingPage()
     }
 
@@ -71,12 +70,22 @@ class MainActivity : AppCompatActivity() {
                             openFavoritesPage(R.anim.enter_from_right, R.anim.exit_to_left)
                         }
                         if(bottomNavBar.selectedItemId == R.id.navigation_info) {
-                            openFavoritesPage(R.anim.enter_from_right, R.anim.exit_to_right)
+                            openFavoritesPage(R.anim.enter_from_left, R.anim.exit_to_right)
                         }
                     }
                     true
                 }
-                R.id.navigation_info -> true
+                R.id.navigation_info -> {
+                    if (bottomNavBar.selectedItemId != R.id.navigation_info) {
+                        if(bottomNavBar.selectedItemId == R.id.navigation_favorites) {
+                            openInfoPage(R.anim.enter_from_right, R.anim.exit_to_left)
+                        }
+                        if(bottomNavBar.selectedItemId == R.id.navigation_home) {
+                            openInfoPage(R.anim.enter_from_left, R.anim.exit_to_right)
+                        }
+                    }
+                    true
+                }
                 else -> { false }
             }
         }
@@ -94,6 +103,10 @@ class MainActivity : AppCompatActivity() {
         val favoritesFormattedData = ArrayList<String>()
         favoritesFormattedData.addAll(favoritesData)
         openFragment(FavoritesFragment.newInstance(staticData, favoritesFormattedData), enterAnimationId, exitAnimationId)
+    }
+
+    private fun openInfoPage(enterAnimationId: Int? = null, exitAnimationId: Int? = null) {
+        openFragment(InfoFragment(), enterAnimationId, exitAnimationId)
     }
 
     private fun openFragment(fragment: Fragment, enterAnimationId: Int?, exitAnimationId: Int?) {
