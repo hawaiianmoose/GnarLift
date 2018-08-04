@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GnarLift</string>
+    <string name="app_name">Gnarlift</string>
     <string name="nav_explore">Explore</string>
     <string name="nav_favorites">Favorites</string>
     <string name="info">Info</string>
@@ -13,10 +13,15 @@
     <string name="mountain_conditions">Mountain Conditions</string>
     <string name="current_conditions">Current Conditions</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
-    <string name="resort_information">Resort Information</string>
+    <string name="resort_information">Directions &amp; Information</string>
+    <string name="gnarlift_name">GNARLIFT</string>
+    <string name="rate_app">Rate the app</string>
+    <string name="submit_resort_request">Submit a resort request</string>
+    <string name="legal_acknowledgements">Legal Acknowledgements</string>
+    <string name="legal_call_out_string">This app makes use of the following open source libraries: Picasso, Gson, RxJava, RxAndroid, OKHttp, Phrase, Lottie, Liftie.</string>
     <string name="TEMPLATE_resort_open_close">{resort} is&#160;</string>
     <string name="TEMPLATE_resort_map_image_uri">http://maps.google.com/maps/api/staticmap?center={lat},{lon}&amp;zoom=14&amp;size=600x260&amp;sensor=false&amp;maptype=terrain&amp;key=AIzaSyAo9N5X0MHn81Iyessyr13f9ulerUs-a-0</string>
-    <string name="TEMPLATE_lift_percent">{lift_percent}%</string>
+    <string name="TEMPLATE_lift_percent">{lift_percent}% of lifts open</string>
     <string name="TEMPLATE_high_temperature">H: {temperature}°</string>
     <string name="TEMPLATE_low_temperature">L: {temperature}°</string>
     <string name="TEMPLATE_map_nav">google.navigation:q={lat},{lon}</string>
@@ -33,5 +38,6 @@
     <string name="twitter_image_content_description">Latest Twitter Image</string>
     <string name="phone_icon_content_description">Phone Icon</string>
     <string name="rate_app_star_content_description">Rate The App Star Icon</string>
+    <string name="email_icon_content_description">Submit Request Icon</string>
 
 </resources>

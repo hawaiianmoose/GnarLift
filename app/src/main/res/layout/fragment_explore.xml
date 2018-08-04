@@ -11,7 +11,7 @@
         android:id="@+id/explore_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/secondaryDarkColor"
+        android:background="@color/darkBlue"
         android:elevation="@dimen/default_elevation"
         app:queryHint="@string/search_hint"/>
 
