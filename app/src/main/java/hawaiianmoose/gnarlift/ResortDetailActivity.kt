@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.text.Html
+import android.text.Spannable
 import android.text.SpannableString
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
@@ -26,6 +27,9 @@ import utils.WeatherToIconConverter
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
+import android.text.style.StyleSpan
+
+
 
 class ResortDetailActivity : AppCompatActivity() {
 
@@ -85,8 +89,15 @@ class ResortDetailActivity : AppCompatActivity() {
 
     private fun setupLifts(liftieResortDataResponse: ResortDataItemResponse) {
         lift_Status_Bar.progress = liftieResortDataResponse.lifts.stats.percentage.open.toBigDecimal().toInt()
-        lift_percent_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
-                .put("lift_percent", lift_Status_Bar.progress.toString()).format().toString()
+
+        val stringBuilder = SpannableStringBuilder()
+        val percentage = SpannableString(Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
+                .put("lift_percent", lift_Status_Bar.progress.toString()).format().toString())
+        stringBuilder.append(percentage)
+        stringBuilder.append(resources.getString(R.string.of_lifts_open))
+        val boldStyle = StyleSpan(android.graphics.Typeface.BOLD)
+        stringBuilder.setSpan(boldStyle, 0, percentage.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        lift_percent_text.text = stringBuilder
     }
 
     private fun setupMap(liftieResortDataResponse: ResortDataItemResponse) {

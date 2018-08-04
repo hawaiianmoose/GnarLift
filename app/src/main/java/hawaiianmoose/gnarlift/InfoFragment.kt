@@ -34,7 +34,7 @@ class InfoFragment : Fragment() {
         }
 
         request_card_view.setOnClickListener{
-            val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "baclifton@gmail.com", null))
+            val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "gnarlift@gmail.com", null))
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "New Resort Request for Gnarlift")
             emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello, I would love to see {RESORT_NAME} in Gnarlift!")
             startActivity(Intent.createChooser(emailIntent, "Submit resort request email..."))
