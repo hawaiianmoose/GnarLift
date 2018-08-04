@@ -75,7 +75,7 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
                     val filteredList = mutableListOf<StaticResortDataItem>()
 
                     for (resort in staticResortData) {
-                        if (resort.name!!.toLowerCase().contains(charString)) {
+                        if (resort.name!!.toLowerCase().startsWith(charString)) {
                             filteredList.add(resort)
                         }
                     }
