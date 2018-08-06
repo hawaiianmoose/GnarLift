@@ -7,4 +7,5 @@ object Constants {
     val favoritesData = "FavoritesData"
     val resortDetailData = "ResortDetailData"
     val liftieEndpoint = "https://liftie.info/api/resort/"
+    val gmapsApiKey = "AIzaSyAo9N5X0MHn81Iyessyr13f9ulerUs-a-0"
 }

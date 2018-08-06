@@ -13,7 +13,7 @@ object WeatherToIconConverter {
         if (lowercaseWeatherText.contains("sun") || lowercaseWeatherText.contains("clear")) {
             return R.drawable.ic_weather_sunny
         }
-        if (lowercaseWeatherText.contains("snow")) {
+        if (lowercaseWeatherText.contains("snow") || lowercaseWeatherText.contains("flur")) {
             return R.drawable.ic_weather_snowy
         }
         if (lowercaseWeatherText.contains("thunder")) {

@@ -59,6 +59,120 @@
       "name": "Aspen Highlands",
       "phone": "800-525-6200",
       "imageUrl": "https://i.imgur.com/jsnafro.jpg"
+    },
+    {
+      "resortId": "aspen-mountain",
+      "name": "Aspen Mountain",
+      "phone": "800-525-6200",
+      "imageUrl": "https://i.imgur.com/qG9ZHMg.jpg"
+    },
+    {
+      "resortId": "attitash",
+      "name": "Attitash",
+      "phone": "800-223-7669",
+      "imageUrl": "https://i.imgur.com/Vd11Gtn.jpg"
+    },
+    {
+      "resortId": "beavercreek",
+      "name": "Beaver Creek",
+      "phone": "970-754-4636",
+      "imageUrl": "https://i.imgur.com/DuF5mz9.jpg"
+    },
+    {
+      "resortId": "big-white",
+      "name": "Big White",
+      "phone": "250-765-3101",
+      "imageUrl": "https://i.imgur.com/Ys6xscT.jpg"
+    },
+    {
+      "resortId": "big-sky",
+      "name": "Big Sky",
+      "phone": "800-548-4486",
+      "imageUrl": "https://i.imgur.com/z52ClHQ.jpg"
+    },
+    {
+      "resortId": "bluemountain",
+      "name": "Blue Mountain",
+      "phone": "877-445-0231",
+      "imageUrl": "https://i.imgur.com/bXvjpWz.jpg"
+    },
+    {
+      "resortId": "bolton-valley",
+      "name": "Bolton Valley",
+      "phone": "877-926-5866",
+      "imageUrl": "https://i.imgur.com/mvl2uv2.jpg"
+    },
+    {
+      "resortId": "boreal",
+      "name": "Boreal",
+      "phone": "530-426–3666",
+      "imageUrl": "https://i.imgur.com/GJAYg1y.jpg"
+    },
+    {
+      "resortId": "brettonwoods",
+      "name": "Bretton Woods",
+      "phone": "603-278-1000",
+      "imageUrl": "https://i.imgur.com/7gODeF5.jpg"
+    },
+    {
+      "resortId": "brianhead",
+      "name": "Brian Head",
+      "phone": "435-677-2035",
+      "imageUrl": "https://i.imgur.com/DPlcGhT.jpg"
+    },
+    {
+      "resortId": "bridger-bowl",
+      "name": "Bridger Bowl",
+      "phone": "406-587-2111",
+      "imageUrl": "https://i.imgur.com/cW6bevR.jpg"
+    },
+    {
+      "resortId": "brighton",
+      "name": "Brighton",
+      "phone": "855-201-7669",
+      "imageUrl": "https://i.imgur.com/tKfsKS4.jpg"
+    },
+    {
+      "resortId": "bromley-mountain",
+      "name": "Bromley Mountain",
+      "phone": "802-824-5522",
+      "imageUrl": "https://i.imgur.com/zsOlvAi.jpg"
+    },
+    {
+      "resortId": "burke-mountain",
+      "name": "Burke Mountain",
+      "phone": "802-626-7300",
+      "imageUrl": "https://i.imgur.com/5oySeMB.jpg"
+    },
+    {
+      "resortId": "buttermilk",
+      "name": "Buttermilk",
+      "phone": "800-525-6200",
+      "imageUrl": "https://i.imgur.com/tkIqfwp.jpg"
+    },
+    {
+      "resortId": "caberfae-peaks",
+      "name": "Caberfae Peaks",
+      "phone": "231-862-3000",
+      "imageUrl": "https://i.imgur.com/CIhvjQX.jpg"
+    },
+    {
+      "resortId": "camelback",
+      "name": "Camelback Mountain",
+      "phone": "570-629-1661",
+      "imageUrl": "https://i.imgur.com/fkE1v1J.jpg"
+    },
+    {
+      "resortId": "cannon",
+      "name": "Cannon",
+      "phone": "603-823-8800",
+      "imageUrl": "https://i.imgur.com/Qsp6Nco.jpg"
+    },
+    {
+      "resortId": "cataloochee",
+      "name": "Cataloochee",
+      "phone": "800-768-0285",
+      "imageUrl": "https://i.imgur.com/BwZydsT.jpg"
     }
   ]
 }
