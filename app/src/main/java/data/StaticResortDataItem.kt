@@ -11,6 +11,6 @@ class StaticResortDataItem : Serializable {
     val name: String? = null
     val phone: String? = null
     val imageUrl: String? = null
-    val latitude: Double? = null
-    val longitude: Double? = null
+    val latitude: Double = 0.0
+    val longitude: Double = 0.0
 }

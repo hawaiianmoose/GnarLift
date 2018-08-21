@@ -5,232 +5,232 @@
       "name": "Mt Brighton",
       "phone": "810-229-9581",
       "imageUrl": "https://i.imgur.com/ZKZssJq.jpg",
-      "latitude": "-83.811553",
-      "longitude": "42.540783"
+      "longitude": "-83.811553",
+      "latitude": "42.540783"
     },
     {
       "resortId": "vail",
       "name": "Vail",
       "phone": "888-500-5155",
       "imageUrl": "https://i.imgur.com/hiUFVIC.jpg",
-      "latitude": "-106.356155",
-      "longitude": "39.605026"
+      "longitude": "-106.356155",
+      "latitude": "39.605026"
     },
     {
       "resortId": "49-degrees-north",
       "name": "49 Degrees North",
       "phone": "509-935-6649",
       "imageUrl": "https://i.imgur.com/Ii2O3mt.jpg",
-      "latitude": "-117.564011",
-      "longitude": "48.302353"
+      "longitude": "-117.564011",
+      "latitude": "48.302353"
     },
     {
       "resortId": "abasin",
       "name": "Arapahoe Basin",
       "phone": "970-468-0718",
       "imageUrl": "https://i.imgur.com/mnMJW5u.jpg",
-      "latitude": "-105.871872",
-      "longitude": "39.642464"
+      "longitude": "-105.871872",
+      "latitude": "39.642464"
     },
     {
       "resortId": "alta",
       "name": "Alta",
       "phone": "801-359-1078",
       "imageUrl": "https://i.imgur.com/7aUSW9z.jpg",
-      "latitude": "-111.63726",
-      "longitude": "40.583828"
+      "longitude": "-111.63726",
+      "latitude": "40.583828"
     },
     {
       "resortId": "alpine",
       "name": "Alpine Meadows",
       "phone": "1-800-403-0206",
       "imageUrl": "https://i.imgur.com/GtmDL1P.jpg",
-      "latitude": "-120.150902",
-      "longitude": "39.148201"
+      "longitude": "-120.150902",
+      "latitude": "39.148201"
     },
     {
       "resortId": "alyeska",
       "name": "Alyeska",
       "phone": "907-754-2111",
       "imageUrl": "https://i.imgur.com/Cy0u6mC.jpg",
-      "latitude": "-149.102676",
-      "longitude": "60.961445"
+      "longitude": "-149.102676",
+      "latitude": "60.961445"
     },
     {
       "resortId": "angel-fire",
       "name": "Angel Fire",
       "phone": "844-218-4107",
       "imageUrl": "https://i.imgur.com/mH9SmpH.jpg",
-      "latitude": "-105.273903",
-      "longitude": "36.387402"
+      "longitude": "-105.273903",
+      "latitude": "36.387402"
     },
     {
       "resortId": "aspen-highlands",
       "name": "Aspen Highlands",
       "phone": "800-525-6200",
       "imageUrl": "https://i.imgur.com/jsnafro.jpg",
-      "latitude": "-106.855904",
-      "longitude": "39.182522"
+      "longitude": "-106.855904",
+      "latitude": "39.182522"
     },
     {
       "resortId": "aspen-mountain",
       "name": "Aspen Mountain",
       "phone": "800-525-6200",
       "imageUrl": "https://i.imgur.com/qG9ZHMg.jpg",
-      "latitude": "-106.819275",
-      "longitude": "39.186714"
+      "longitude": "-106.819275",
+      "latitude": "39.186714"
     },
     {
       "resortId": "attitash",
       "name": "Attitash",
       "phone": "800-223-7669",
       "imageUrl": "https://i.imgur.com/Vd11Gtn.jpg",
-      "latitude": "-71.282776",
-      "longitude": "44.077778"
+      "longitude": "-71.282776",
+      "latitude": "44.077778"
     },
     {
       "resortId": "beavercreek",
       "name": "Beaver Creek",
       "phone": "970-754-4636",
       "imageUrl": "https://i.imgur.com/DuF5mz9.jpg",
-      "latitude": "-106.517899",
-      "longitude": "39.600464"
+      "longitude": "-106.517899",
+      "latitude": "39.600464"
     },
     {
       "resortId": "big-white",
       "name": "Big White",
       "phone": "250-765-3101",
       "imageUrl": "https://i.imgur.com/Ys6xscT.jpg",
-      "latitude": "-119.495399",
-      "longitude": "49.888"
+      "longitude": "-119.495399",
+      "latitude": "49.888"
     },
     {
       "resortId": "big-sky",
       "name": "Big Sky",
       "phone": "800-548-4486",
       "imageUrl": "https://i.imgur.com/z52ClHQ.jpg",
-      "latitude": "-111.401389",
-      "longitude": "45.283333"
+      "longitude": "-111.401389",
+      "latitude": "45.283333"
     },
     {
       "resortId": "bluemountain",
       "name": "Blue Mountain",
       "phone": "877-445-0231",
       "imageUrl": "https://i.imgur.com/bXvjpWz.jpg",
-      "latitude": "-80.316116",
-      "longitude": "44.50758"
+      "longitude": "-80.316116",
+      "latitude": "44.50758"
     },
     {
       "resortId": "bolton-valley",
       "name": "Bolton Valley",
       "phone": "877-926-5866",
       "imageUrl": "https://i.imgur.com/mvl2uv2.jpg",
-      "latitude": "-72.84948",
-      "longitude": "44.421673"
+      "longitude": "-72.84948",
+      "latitude": "44.421673"
     },
     {
       "resortId": "boreal",
       "name": "Boreal",
       "phone": "530-426–3666",
       "imageUrl": "https://i.imgur.com/GJAYg1y.jpg",
-      "latitude": "-120.270203",
-      "longitude": "39.316502"
+      "longitude": "-120.270203",
+      "latitude": "39.316502"
     },
     {
       "resortId": "breck",
       "name": "Breckenridge",
       "phone": "800-789-7669",
       "imageUrl": "https://i.imgur.com/F74R6V2.jpg",
-      "latitude": "-106.066238",
-      "longitude": "39.480724"
+      "longitude": "-106.066238",
+      "latitude": "39.480724"
     },
     {
       "resortId": "brettonwoods",
       "name": "Bretton Woods",
       "phone": "603-278-1000",
       "imageUrl": "https://i.imgur.com/7gODeF5.jpg",
-      "latitude": "-71.340408",
-      "longitude": "44.077122"
+      "longitude": "-71.340408",
+      "latitude": "44.077122"
     },
     {
       "resortId": "brianhead",
       "name": "Brian Head",
       "phone": "435-677-2035",
       "imageUrl": "https://i.imgur.com/DPlcGhT.jpg",
-      "latitude": "-112.848129",
-      "longitude": "37.692753"
+      "longitude": "-112.848129",
+      "latitude": "37.692753"
     },
     {
       "resortId": "bridger-bowl",
       "name": "Bridger Bowl",
       "phone": "406-587-2111",
       "imageUrl": "https://i.imgur.com/cW6bevR.jpg",
-      "latitude": "-110.89814",
-      "longitude": "45.817974"
+      "longitude": "-110.89814",
+      "latitude": "45.817974"
     },
     {
       "resortId": "brighton",
       "name": "Brighton",
       "phone": "855-201-7669",
       "imageUrl": "https://i.imgur.com/tKfsKS4.jpg",
-      "latitude": "-111.592041",
-      "longitude": "40.620697"
+      "longitude": "-111.592041",
+      "latitude": "40.620697"
     },
     {
       "resortId": "bromley-mountain",
       "name": "Bromley Mountain",
       "phone": "802-824-5522",
       "imageUrl": "https://i.imgur.com/zsOlvAi.jpg",
-      "latitude": "-72.935013",
-      "longitude": "43.213402"
+      "longitude": "-72.935013",
+      "latitude": "43.213402"
     },
     {
       "resortId": "burke-mountain",
       "name": "Burke Mountain",
       "phone": "802-626-7300",
       "imageUrl": "https://i.imgur.com/5oySeMB.jpg",
-      "latitude": "-71.91745",
-      "longitude": "44.587898"
+      "longitude": "-71.91745",
+      "latitude": "44.587898"
     },
     {
       "resortId": "buttermilk",
       "name": "Buttermilk",
       "phone": "800-525-6200",
       "imageUrl": "https://i.imgur.com/tkIqfwp.jpg",
-      "latitude": "-106.860474",
-      "longitude": "39.206944"
+      "longitude": "-106.860474",
+      "latitude": "39.206944"
     },
     {
       "resortId": "caberfae-peaks",
       "name": "Caberfae Peaks",
       "phone": "231-862-3000",
       "imageUrl": "https://i.imgur.com/CIhvjQX.jpg",
-      "latitude": "-85.719765",
-      "longitude": "44.245014"
+      "longitude": "-85.719765",
+      "latitude": "44.245014"
     },
     {
       "resortId": "camelback",
       "name": "Camelback Mountain",
       "phone": "570-629-1661",
       "imageUrl": "https://i.imgur.com/fkE1v1J.jpg",
-      "latitude": "-75.355",
-      "longitude": "41.051389"
+      "longitude": "-75.355",
+      "latitude": "41.051389"
     },
     {
       "resortId": "cannon",
       "name": "Cannon",
       "phone": "603-823-8800",
       "imageUrl": "https://i.imgur.com/Qsp6Nco.jpg",
-      "latitude": "-71.698418",
-      "longitude": "44.156452"
+      "longitude": "-71.698418",
+      "latitude": "44.156452"
     },
     {
       "resortId": "cataloochee",
       "name": "Cataloochee",
       "phone": "800-768-0285",
       "imageUrl": "https://i.imgur.com/BwZydsT.jpg",
-      "latitude": "-83.090027",
-      "longitude": "35.562656"
+      "longitude": "-83.090027",
+      "latitude": "35.562656"
     }
   ]
 }

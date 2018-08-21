@@ -40,5 +40,6 @@
     <string name="phone_icon_content_description">Phone Icon</string>
     <string name="rate_app_star_content_description">Rate The App Star Icon</string>
     <string name="email_icon_content_description">Submit Request Icon</string>
+    <string name="title_activity_explore_map">ExploreMap</string>
 
 </resources>
