@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import android.support.v4.content.ContextCompat
 import android.support.v4.app.ActivityCompat
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import data.Constants
 import data.StaticResortDataItemResponse
 
 class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -24,7 +25,7 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        staticData = intent.extras.get("staticData") as StaticResortDataItemResponse
+        staticData = intent.extras.get(Constants.staticResortData) as StaticResortDataItemResponse
 
         setContentView(R.layout.activity_explore_map)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
@@ -65,7 +66,6 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
             val locationMarker = mMap.addMarker(MarkerOptions().position(resortLocation).title(resort.name))
             locationMarker.showInfoWindow()
             locationMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
-            locationMarker.tag = "poop"
         }
     }
 }

@@ -64,10 +64,9 @@ class ExploreFragment : Fragment() {
             }
         })
 
-        //new map shit
         map_button.setOnClickListener {
             val intent = Intent(this.context, ExploreMapActivity::class.java)
-            intent.putExtra("staticData", staticResortData)
+            intent.putExtra(Constants.staticResortData, staticResortData)
             startActivity(intent)
         }
     }
