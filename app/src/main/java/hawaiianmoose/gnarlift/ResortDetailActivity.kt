@@ -29,8 +29,6 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 import android.text.style.StyleSpan
 
-
-
 class ResortDetailActivity : AppCompatActivity() {
 
     private var staticData: StaticResortDataItem = StaticResortDataItem()

@@ -16,7 +16,9 @@ import android.support.v4.content.ContextCompat
 import android.support.v4.app.ActivityCompat
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import data.Constants
+import data.StaticResortDataItem
 import data.StaticResortDataItemResponse
+import utils.LiftieServiceUtil
 
 class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -38,9 +40,7 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == //move to app startup
-                PackageManager.PERMISSION_GRANTED &&
-                ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) ==
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true)
             googleMap.getUiSettings().setMyLocationButtonEnabled(true)
@@ -52,12 +52,12 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val gps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
         val currentLocation = LatLng(gps.latitude, gps.longitude)
-        val locationMarker = mMap.addMarker(MarkerOptions().position(currentLocation).title("Current Location"))
+        val locationMarker = mMap.addMarker(MarkerOptions().position(currentLocation).title(getString(R.string.current_location)))
         locationMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
         locationMarker.showInfoWindow()
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation))
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(7f))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(6f))
     }
 
     fun addResortMarkers(mMap: GoogleMap) {
@@ -66,6 +66,12 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
             val locationMarker = mMap.addMarker(MarkerOptions().position(resortLocation).title(resort.name))
             locationMarker.showInfoWindow()
             locationMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+            locationMarker.tag = resort
+
+            mMap.setOnInfoWindowClickListener { marker ->
+                LiftieServiceUtil.getLiftieDataForResort(marker.tag as StaticResortDataItem, this)
+                //Clear dialog with loading animation here
+            }
         }
     }
 }
