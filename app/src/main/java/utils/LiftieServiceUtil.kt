@@ -1,5 +1,6 @@
 package utils
 
+import android.app.DialogFragment
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
@@ -44,7 +45,7 @@ object LiftieServiceUtil {
         staticData.resortId?.let { LiftieService().fetchResortInfo(it, liftieSubject) }
     }
 
-    fun getLiftieDataForResort(staticData: StaticResortDataItem, parentContext: Context) {
+    fun getLiftieDataForResort(staticData: StaticResortDataItem, parentContext: Context, loadingDialog: DialogFragment) {
         val liftieSubject = PublishSubject.create<ResortDataItemResponse>()
         liftieSubject.subscribe(object : Observer<ResortDataItemResponse> {
             override fun onNext(liftieResortDataResponse: ResortDataItemResponse) {
@@ -53,6 +54,9 @@ object LiftieServiceUtil {
                     putExtra(Constants.resortDetailData, liftieResortDataResponse)
                 }
                 ContextCompat.startActivity(parentContext, intent, null)
+                Handler().postDelayed({
+                    loadingDialog.dismiss()
+                }, 300)
             }
 
             override fun onSubscribe(d: Disposable) {}
