@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import data.Constants
 import data.StaticResortDataItemResponse
+import kotlinx.android.synthetic.main.fragment_favorites.*
 
 class FavoritesFragment : Fragment() {
     private var staticResortData: StaticResortDataItemResponse = StaticResortDataItemResponse()
@@ -42,9 +43,16 @@ class FavoritesFragment : Fragment() {
 
         val recycler = view.findViewById(R.id.favorite_resorts_recycler) as RecyclerView
         val viewManager = LinearLayoutManager(view.context)
-        val viewAdapter = FavoritesResortRecyclerViewAdapter(staticResortData, favoritesData)
+        val viewAdapter = FavoritesResortRecyclerViewAdapter(staticResortData, context!!)
         recycler.setHasFixedSize(true)
         recycler.layoutManager = viewManager
         recycler.adapter = viewAdapter
+    }
+
+    override fun onResume() {
+        val favAdapter = favorite_resorts_recycler.adapter as FavoritesResortRecyclerViewAdapter
+        favAdapter.refreshFavorites()
+        favAdapter.notifyDataSetChanged()
+        super.onResume()
     }
 }

@@ -10,19 +10,19 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.Toast
 import com.squareup.picasso.Picasso
-import data.StaticResortDataItem
 import data.StaticResortDataItemResponse
 import kotlinx.android.synthetic.main.resort_card_view.view.*
 import service.FavoriteService
 import utils.LiftieServiceUtil
 
-class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), BaseResortRecyclerAdapter {
+class FavoritesResortRecyclerViewAdapter(val staticResortDataResponse: StaticResortDataItemResponse, context: Context): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), BaseResortRecyclerAdapter {
     override var isLoading: Boolean = false
-    lateinit var parentContext: Context
-    var favoritesResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts.filter { r -> favoritesData.contains(r.resortId) }.toMutableList()
+    var parentContext = context
+    var favoritesData = FavoriteService.getInstance(context).getSavedFavorites()
+    var favoritesResortData = staticResortDataResponse.resorts.filter { r -> favoritesData.contains(r.resortId) }.toMutableList()
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResortRecyclerViewAdapter.ViewHolder {
-        parentContext = parent.context
         val cardView = LayoutInflater.from(parentContext).inflate(R.layout.resort_card_view, parent, false) as RelativeLayout
         return ResortRecyclerViewAdapter.ViewHolder(cardView)
     }
@@ -53,6 +53,13 @@ class FavoritesResortRecyclerViewAdapter(staticResortDataResponse: StaticResortD
     }
 
     override fun getItemCount() = favoritesResortData.size
+
+    fun refreshFavorites() {
+        if (favoritesResortData.any()) {
+            favoritesData = FavoriteService.getInstance(parentContext).getSavedFavorites()
+            favoritesResortData = staticResortDataResponse.resorts.filter { r -> favoritesData.contains(r.resortId) }.toMutableList()
+        }
+    }
 
     private fun makeToast(resortName: String, stringId: Int): String {
         return String.format(parentContext.getString(stringId), resortName)

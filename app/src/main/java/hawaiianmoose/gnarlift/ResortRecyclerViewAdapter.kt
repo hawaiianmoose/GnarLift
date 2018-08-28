@@ -18,15 +18,17 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import utils.LiftieServiceUtil
 
-class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticResortDataItemResponse, private val favoritesData: ArrayList<String>): RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), Filterable, BaseResortRecyclerAdapter {
+class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticResortDataItemResponse) : RecyclerView.Adapter<ResortRecyclerViewAdapter.ViewHolder>(), Filterable, BaseResortRecyclerAdapter {
     override var isLoading: Boolean = false
     lateinit var parentContext: Context
     var staticResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts
     var filteredResortData: MutableList<StaticResortDataItem> = staticResortDataResponse.resorts
+    var favoritesData = mutableSetOf<String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResortRecyclerViewAdapter.ViewHolder {
         parentContext = parent.context
         val cardView = LayoutInflater.from(parentContext).inflate(R.layout.resort_card_view, parent, false) as RelativeLayout
+        favoritesData = FavoriteService.getInstance(this.parentContext).getSavedFavorites()
         return ViewHolder(cardView)
     }
 
@@ -54,12 +56,12 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
 
         viewHolder.cardView.favorite_resort_button.setOnClickListener {
             if (favoritesData.contains(resortId)) {
-              removeFavoriteResort(viewHolder, resortId, resortName)
+                removeFavoriteResort(viewHolder, resortId, resortName)
             } else {
                 val image = viewHolder.cardView.favorite_resort_button as ImageView
                 val iconBounce = AnimationUtils.loadAnimation(parentContext, R.anim.bounce)
                 image.startAnimation(iconBounce)
-               addFavoriteResort(viewHolder, resortId, resortName)
+                addFavoriteResort(viewHolder, resortId, resortName)
             }
         }
     }

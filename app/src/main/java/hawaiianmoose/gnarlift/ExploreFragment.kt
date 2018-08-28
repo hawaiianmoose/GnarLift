@@ -45,7 +45,7 @@ class ExploreFragment : Fragment() {
 
         val recycler = view.findViewById(R.id.explore_resorts_recycler) as RecyclerView
         val viewManager = LinearLayoutManager(view.context)
-        val viewAdapter = ResortRecyclerViewAdapter(staticResortData, favoritesData)
+        val viewAdapter = ResortRecyclerViewAdapter(staticResortData)
         recycler.setHasFixedSize(true)
         recycler.layoutManager = viewManager
         recycler.adapter = viewAdapter
@@ -69,5 +69,10 @@ class ExploreFragment : Fragment() {
             intent.putExtra(Constants.staticResortData, staticResortData)
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        explore_resorts_recycler.adapter.notifyDataSetChanged()
+        super.onResume()
     }
 }

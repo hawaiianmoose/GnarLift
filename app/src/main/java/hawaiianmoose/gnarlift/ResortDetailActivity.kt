@@ -28,11 +28,15 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 import android.text.style.StyleSpan
+import android.view.animation.AnimationUtils
+import android.widget.Toast
+import service.FavoriteService
 
 class ResortDetailActivity : AppCompatActivity() {
 
     private var staticData: StaticResortDataItem = StaticResortDataItem()
     private var liftieData: ResortDataItemResponse = ResortDataItemResponse()
+    private lateinit var favoritesData: MutableSet<String>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,11 +44,50 @@ class ResortDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_resort_detail)
         staticData = intent.extras[Constants.favoritesData] as StaticResortDataItem
         liftieData = intent.extras[Constants.resortDetailData] as ResortDataItemResponse
+        favoritesData = FavoriteService.getInstance(this).getSavedFavorites()
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
         bindStaticData()
         bindLiftieData(liftieData)
+
+        //TODO refactor
+        if (favoritesData.contains(staticData.resortId)) {
+            favorite_title_button.setImageResource(R.drawable.ic_sharp_star_24px)
+        } else {
+            favorite_title_button.setImageResource(R.drawable.ic_sharp_star_border_24px)
+        }
+
+        favorite_title_button.setOnClickListener {
+            if (favoritesData.contains(staticData.resortId)) {
+                removeFavoriteResort(staticData.resortId!!, staticData.name!!)
+            } else {
+                val image = favorite_title_button as ImageView
+                val iconBounce = AnimationUtils.loadAnimation(this, R.anim.bounce)
+                image.startAnimation(iconBounce)
+                addFavoriteResort(staticData.resortId!!, staticData.name!!)
+            }
+        }
     }
+
+    //TODO below refactor
+    private fun addFavoriteResort(resortId: String, resortName: String) {
+        favorite_title_button.setImageResource(R.drawable.ic_sharp_star_24px)
+        FavoriteService.getInstance(this).saveFavorite(resortId)
+        favoritesData.add(resortId)
+        Toast.makeText(this, makeToast(resortName, R.string.toast_added), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun removeFavoriteResort(resortId: String, resortName: String) {
+        favorite_title_button.setImageResource(R.drawable.ic_sharp_star_border_24px)
+        FavoriteService.getInstance(this).removeFavorite(resortId)
+        favoritesData.remove(resortId)
+        Toast.makeText(this, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_SHORT).show()
+    }
+
+    private fun makeToast(resortName: String, stringId: Int): String {
+        return String.format(this.getString(stringId), resortName)
+    }
+    //TODO above refactor
 
     override fun onBackPressed() {
         super.onBackPressed()
