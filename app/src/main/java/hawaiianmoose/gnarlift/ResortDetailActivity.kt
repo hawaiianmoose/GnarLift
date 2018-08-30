@@ -49,8 +49,7 @@ class ResortDetailActivity : AppCompatActivity() {
         backButton.setOnClickListener { this.onBackPressed() }
         bindStaticData()
         bindLiftieData(liftieData)
-
-        //TODO refactor
+        
         if (favoritesData.contains(staticData.resortId)) {
             favorite_title_button.setImageResource(R.drawable.ic_sharp_star_24px)
         } else {
@@ -69,7 +68,6 @@ class ResortDetailActivity : AppCompatActivity() {
         }
     }
 
-    //TODO below refactor
     private fun addFavoriteResort(resortId: String, resortName: String) {
         favorite_title_button.setImageResource(R.drawable.ic_sharp_star_24px)
         FavoriteService.getInstance(this).saveFavorite(resortId)
@@ -87,7 +85,6 @@ class ResortDetailActivity : AppCompatActivity() {
     private fun makeToast(resortName: String, stringId: Int): String {
         return String.format(this.getString(stringId), resortName)
     }
-    //TODO above refactor
 
     override fun onBackPressed() {
         super.onBackPressed()

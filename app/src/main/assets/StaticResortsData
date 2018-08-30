@@ -231,6 +231,14 @@
       "imageUrl": "https://i.imgur.com/BwZydsT.jpg",
       "longitude": "-83.090027",
       "latitude": "35.562656"
+    },
+    {
+      "resortId": "chinapeak",
+      "name": "China Peak",
+      "phone": "559-233-2500",
+      "imageUrl": "https://i.imgur.com/agyIfF6.jpg",
+      "longitude": "-119.161705",
+      "latitude": "37.228348"
     }
   ]
 }
