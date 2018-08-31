@@ -157,31 +157,37 @@ class ResortDetailActivity : AppCompatActivity() {
 
     @SuppressLint("NewApi")
     private fun setupTwitter(liftieResortDataResponse: ResortDataItemResponse) {
-        val latestTweet = liftieResortDataResponse.twitter.tweets.first()
-        val stringBuilder = SpannableStringBuilder()
-        val twitterHandle = SpannableString(Phrase.from(resources.getString(R.string.TEMPLATE_twitter_handle))
-                .put("twitter_handle", liftieResortDataResponse.twitter.user).format().toString())
-        twitterHandle.setSpan(ForegroundColorSpan(resources.getColor(R.color.tweet_color)), 0, twitterHandle.length, 0)
-        stringBuilder.append(twitterHandle)
-        stringBuilder.append(Html.fromHtml(latestTweet.text))
-        tweet_text_view.setText(stringBuilder, TextView.BufferType.SPANNABLE)
+        if (liftieResortDataResponse.twitter.tweets.any()) {
+            val latestTweet = liftieResortDataResponse.twitter.tweets.first()
+            val stringBuilder = SpannableStringBuilder()
+            val twitterHandle = SpannableString(Phrase.from(resources.getString(R.string.TEMPLATE_twitter_handle))
+                    .put("twitter_handle", liftieResortDataResponse.twitter.user).format().toString())
+            twitterHandle.setSpan(ForegroundColorSpan(resources.getColor(R.color.tweet_color)), 0, twitterHandle.length, 0)
+            stringBuilder.append(twitterHandle)
+            stringBuilder.append(Html.fromHtml(latestTweet.text))
+            tweet_text_view.setText(stringBuilder, TextView.BufferType.SPANNABLE)
 
-        val formatter = DateTimeFormatter.ofPattern("eee MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH)
-        val date = LocalDate.parse(latestTweet.created_at, formatter)
-        tweet_date_text_view.text = date.format(DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH))
+            val formatter = DateTimeFormatter.ofPattern("eee MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH)
+            val date = LocalDate.parse(latestTweet.created_at, formatter)
+            tweet_date_text_view.text = date.format(DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH))
 
-        if (!latestTweet.entities.media.any() || latestTweet.entities.media.first().media_url.isEmpty()) {
-            tweet_image_view.visibility = View.GONE
+            if (!latestTweet.entities.media.any() || latestTweet.entities.media.first().media_url.isEmpty()) {
+                tweet_image_view.visibility = View.GONE
+            } else {
+                Picasso.get().load(latestTweet.entities.media.first().media_url).fit().centerCrop().into(tweet_image_view)
+            }
+
+            tweet_card_view.setOnClickListener {
+                val twitterDeeplink = Uri.parse(Phrase.from(resources.getString(R.string.TEMPLATE_twitter_deeplink))
+                        .put("user", liftieResortDataResponse.twitter.user)
+                        .format().toString())
+                val intent = Intent(Intent.ACTION_VIEW, twitterDeeplink)
+                startActivity(intent)
+            }
         } else {
-            Picasso.get().load(latestTweet.entities.media.first().media_url).fit().centerCrop().into(tweet_image_view)
-        }
-
-        tweet_card_view.setOnClickListener {
-            val twitterDeeplink = Uri.parse(Phrase.from(resources.getString(R.string.TEMPLATE_twitter_deeplink))
-                    .put("user", liftieResortDataResponse.twitter.user)
-                    .format().toString())
-            val intent = Intent(Intent.ACTION_VIEW, twitterDeeplink)
-            startActivity(intent)
+            Picasso.get().load(staticData.imageUrl).fit().centerCrop().into(default_image_view)
+            tweet_card_view.visibility = View.INVISIBLE
+            default_image_view.visibility = View.VISIBLE
         }
     }
 

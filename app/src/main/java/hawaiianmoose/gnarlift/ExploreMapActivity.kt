@@ -57,7 +57,7 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
         locationMarker.showInfoWindow()
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation))
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(6f))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(5f))
     }
 
     fun addResortMarkers(mMap: GoogleMap) {

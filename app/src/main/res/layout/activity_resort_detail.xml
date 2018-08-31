@@ -113,6 +113,13 @@
 
             </android.support.v7.widget.CardView>
 
+            <ImageView
+                android:id="@+id/default_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="244dp"
+                android:src="@color/darkBlue"
+                android:visibility="gone"/>
+
             <LinearLayout
                 android:id="@+id/conditions_container"
                 android:layout_width="match_parent"
