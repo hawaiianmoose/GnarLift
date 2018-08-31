@@ -49,7 +49,7 @@ class ResortDetailActivity : AppCompatActivity() {
         backButton.setOnClickListener { this.onBackPressed() }
         bindStaticData()
         bindLiftieData(liftieData)
-        
+
         if (favoritesData.contains(staticData.resortId)) {
             favorite_title_button.setImageResource(R.drawable.ic_sharp_star_24px)
         } else {

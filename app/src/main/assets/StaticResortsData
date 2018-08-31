@@ -239,6 +239,230 @@
       "imageUrl": "https://i.imgur.com/agyIfF6.jpg",
       "longitude": "-119.161705",
       "latitude": "37.228348"
+    },
+    {
+      "resortId": "copper",
+      "name": "Copper Mountain",
+      "phone": "888-760-7561",
+      "imageUrl": "https://i.imgur.com/pD4Rvl1.jpg",
+      "longitude": "-106.155998",
+      "latitude": "39.501125"
+    },
+    {
+      "resortId": "courchevel",
+      "name": "Courchevel",
+      "phone": "+33-4-79-08-00-29",
+      "imageUrl": "https://i.imgur.com/ZzJBQDV.jpg",
+      "longitude": "6.6339",
+      "latitude": "45.415"
+    },
+    {
+      "resortId": "cranmore-mountain",
+      "name": "Cranmore",
+      "phone": "603-356-5543",
+      "imageUrl": "https://i.imgur.com/SloZ3oB.jpg",
+      "longitude": "-71.116783",
+      "latitude": "44.055382"
+    },
+    {
+      "resortId": "cransmontana",
+      "name": "Crans-Montana",
+      "phone": "+41-848-22-10-12",
+      "imageUrl": "https://i.imgur.com/ra89AM3.jpg",
+      "longitude": "7.4674",
+      "latitude": "46.3087"
+    },
+    {
+      "resortId": "crested-butte",
+      "name": "Crested Butte",
+      "phone": "970-349-2222",
+      "imageUrl": "https://i.imgur.com/iezgAzF.jpg",
+      "longitude": "-106.964821",
+      "latitude": "38.899502"
+    },
+    {
+      "resortId": "crystal-mountain",
+      "name": "Crystal Mountain",
+      "phone": "1-360-663-3050",
+      "imageUrl": "https://i.imgur.com/Mp2gHyu.jpg",
+      "longitude": "-121.5802",
+      "latitude": "46.9459"
+    },
+    {
+      "resortId": "deer-valley",
+      "name": "Deer Valley",
+      "phone": "435-649-1000",
+      "imageUrl": "https://i.imgur.com/oDFRFUl.jpg",
+      "longitude": "-111.489555",
+      "latitude": "40.620499"
+    },
+    {
+      "resortId": "devils-head",
+      "name": "Devil's Head",
+      "phone": "608-493-2204",
+      "imageUrl": "https://i.imgur.com/CCtxdlJ.jpg",
+      "longitude": "-119.930199",
+      "latitude": "39.249599"
+    },
+    {
+      "resortId": "diamondpeak",
+      "name": "Diamond Peak",
+      "phone": "775-832-1177",
+      "imageUrl": "https://i.imgur.com/v9Qqdqt.jpg",
+      "longitude": "-119.930199",
+      "latitude": "39.249599"
+    },
+    {
+      "resortId": "gore-mountain",
+      "name": "Gore Mountain",
+      "phone": "518-251-2411",
+      "imageUrl": "https://i.imgur.com/8swruxt.jpg",
+      "longitude": "-74.007172",
+      "latitude": "43.672653"
+    },
+    {
+      "resortId": "grand-targhee",
+      "name": "Grand Targhee",
+      "phone": "307-353-2300",
+      "imageUrl": "https://i.imgur.com/kP51MdV.jpg",
+      "longitude": "-111.065201",
+      "latitude": "43.742401"
+    },
+    {
+      "resortId": "grouse",
+      "name": "Grouse Mountain",
+      "phone": "604-980-9311",
+      "imageUrl": "https://i.imgur.com/CNHR3Up.jpg",
+      "longitude": "-123.083099",
+      "latitude": "49.379292"
+    },
+    {
+      "resortId": "gunstock",
+      "name": "Gunstock",
+      "phone": "603-293-4341",
+      "imageUrl": "https://i.imgur.com/OjJLu0A.jpg",
+      "longitude": "-71.360092",
+      "latitude": "43.551796"
+    },
+    {
+      "resortId": "heavenly",
+      "name": "Heavenly",
+      "phone": "775-586-7000",
+      "imageUrl": "https://i.imgur.com/V5RngMN.jpg",
+      "longitude": "-119.939629",
+      "latitude": "38.936611"
+    },
+    {
+      "resortId": "hochfuegen",
+      "name": "Hochfügen",
+      "phone": "0043-0-5280-204",
+      "imageUrl": "https://i.imgur.com/uvgCmPD.jpg",
+      "longitude": "11.77694416",
+      "latitude": "47.26889038"
+    },
+    {
+      "resortId": "homewood",
+      "name": "Homewood",
+      "phone": "530-525-2992",
+      "imageUrl": "https://i.imgur.com/V63UWGI.jpg",
+      "longitude": "-120.219498",
+      "latitude": "39.063099"
+    },
+    {
+      "resortId": "hoodoo",
+      "name": "Hoodoo",
+      "phone": "541-822-3799",
+      "imageUrl": "https://i.imgur.com/z4bsrfS.jpg",
+      "longitude": "-121.871513",
+      "latitude": "44.408646"
+    },
+    {
+      "resortId": "hunter",
+      "name": "Hunter Mountain",
+      "phone": "800-486-8376",
+      "imageUrl": "https://i.imgur.com/ZWJdJUu.jpg",
+      "longitude": "-74.20874",
+      "latitude": "42.205029"
+    },
+    {
+      "resortId": "ischgl-silvretta-arena",
+      "name": "Ischgl-Silvretta",
+      "phone": "+43-50990-100",
+      "imageUrl": "https://i.imgur.com/Hbr2tp3.jpg",
+      "longitude": "10.2887",
+      "latitude": "47.010101"
+    },
+    {
+      "resortId": "jackson-hole",
+      "name": "Jackson Hole",
+      "phone": "1-307-733-2292",
+      "imageUrl": "https://i.imgur.com/Ri8mWIn.jpg",
+      "longitude": "-110.827438",
+      "latitude": "43.588318"
+    },
+    {
+      "resortId": "jay-peak",
+      "name": "Jay Peak",
+      "phone": "802-988-2611",
+      "imageUrl": "https://i.imgur.com/Ri8mWIn.jpg",
+      "longitude": "-72.501701",
+      "latitude": "44.928837"
+    },
+    {
+      "resortId": "jiminypeak",
+      "name": "Jiminy Peak",
+      "phone": "413-738-5500",
+      "imageUrl": "https://i.imgur.com/NtmxQFE.jpg",
+      "longitude": "-73.291328",
+      "latitude": "42.556477"
+    },
+    {
+      "resortId": "june-mountain",
+      "name": "June Mountain",
+      "phone": "760-648-7733",
+      "imageUrl": "https://i.imgur.com/xvpmCvG.jpg",
+      "longitude": "-119.090721",
+      "latitude": "37.767796"
+    },
+    {
+      "resortId": "keystone",
+      "name": "Keystone",
+      "phone": "970-754-0001",
+      "imageUrl": "https://i.imgur.com/kcE418c.jpg",
+      "longitude": "-105.953438",
+      "latitude": "39.605011"
+    },
+    {
+      "resortId": "killington",
+      "name": "Killington",
+      "phone": "802-422-3333",
+      "imageUrl": "https://i.imgur.com/VAxRhvh.jpg",
+      "longitude": "-72.802879",
+      "latitude": "43.619675"
+    },
+    {
+      "resortId": "king-pine",
+      "name": "King Pine",
+      "phone": "603-367-8896",
+      "imageUrl": "https://i.imgur.com/rcBWJx4.jpg",
+      "longitude": "-71.088127",
+      "latitude": "43.86063"
+    },
+    {
+      "resortId": "kirkwood",
+      "name": "Kirkwood",
+      "phone": "209-258-6000",
+      "imageUrl": "https://i.imgur.com/YSca7Wm.jpg",
+      "longitude": "-120.066856",
+      "latitude": "38.683231"
+    },
+    {
+      "resortId": "kitzbuehel",
+      "name": "Kitzbühel",
+      "phone": "+43-5356-66660",
+      "imageUrl": "https://i.imgur.com/GoX645w.jpg",
+      "longitude": "12.3908",
+      "latitude": "47.446602"
     }
   ]
 }
