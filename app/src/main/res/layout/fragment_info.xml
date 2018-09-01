@@ -121,34 +121,46 @@
 
     </android.support.v7.widget.CardView>
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:id="@+id/legal_card_view"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="48dp"
+        android:layout_below="@id/request_card_view"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/resort_card_bottom_margin"
         android:layout_marginLeft="@dimen/resort_card_margin"
         android:layout_marginRight="@dimen/resort_card_margin"
-        android:layout_marginTop="@dimen/resort_card_margin">
+        android:layout_marginTop="@dimen/resort_card_margin"
+        android:elevation="4dp">
 
-        <TextView
-            android:id="@+id/legal_text_view"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/legal_acknowledgements"
-            android:drawableStart="@drawable/ic_sharp_gavel_24px"
-            android:drawableTint="@color/primaryColor"
-            android:drawablePadding="4dp"
-            android:textSize="18sp"/>
+            android:background="?android:attr/selectableItemBackground">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_below="@+id/legal_text_view"
-            android:textSize="12sp"
-            android:text="@string/legal_call_out_string"/>
+            <ImageView
+                android:id="@+id/legal_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_margin="8dp"
+                android:contentDescription="@string/email_icon_content_description"
+                android:src="@drawable/ic_sharp_gavel_24px"
+                android:tint="@color/primaryColor"/>
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/legal_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="2dp"
+                android:layout_toEndOf="@id/legal_icon"
+                android:text="@string/legal_acknowledgements"
+                android:textSize="18sp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
 
 </RelativeLayout>

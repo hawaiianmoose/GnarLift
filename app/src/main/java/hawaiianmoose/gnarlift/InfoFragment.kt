@@ -19,7 +19,7 @@ class InfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        rate_card_view.setOnClickListener{
+        rate_card_view.setOnClickListener {
             val uri = Uri.parse("market://details?id=" + context?.packageName)
             val goToMarket = Intent(Intent.ACTION_VIEW, uri)
 
@@ -33,11 +33,15 @@ class InfoFragment : Fragment() {
             }
         }
 
-        request_card_view.setOnClickListener{
+        request_card_view.setOnClickListener {
             val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "gnarlift@gmail.com", null))
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "New Resort Request for Gnarlift")
             emailIntent.putExtra(Intent.EXTRA_TEXT, "Hello, I would love to see {RESORT_NAME} in Gnarlift!")
             startActivity(Intent.createChooser(emailIntent, "Submit resort request email..."))
+        }
+
+        legal_card_view.setOnClickListener {
+            startActivity(Intent(this.context, LegalActivity::class.java))
         }
     }
 

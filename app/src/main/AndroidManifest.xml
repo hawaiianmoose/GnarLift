@@ -43,6 +43,8 @@
             android:name=".ExploreMapActivity"
             android:label="@string/title_activity_explore_map">
         </activity>
+        <activity android:name=".LegalActivity">
+        </activity>
     </application>
 
 </manifest>
