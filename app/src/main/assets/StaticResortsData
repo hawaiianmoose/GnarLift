@@ -1,22 +1,6 @@
 {
   "resorts": [
     {
-      "resortId": "mtbrighton",
-      "name": "Mt Brighton",
-      "phone": "810-229-9581",
-      "imageUrl": "https://i.imgur.com/ZKZssJq.jpg",
-      "longitude": "-83.811553",
-      "latitude": "42.540783"
-    },
-    {
-      "resortId": "vail",
-      "name": "Vail",
-      "phone": "888-500-5155",
-      "imageUrl": "https://i.imgur.com/hiUFVIC.jpg",
-      "longitude": "-106.356155",
-      "latitude": "39.605026"
-    },
-    {
       "resortId": "49-degrees-north",
       "name": "49 Degrees North",
       "phone": "509-935-6649",
@@ -463,6 +447,542 @@
       "imageUrl": "https://i.imgur.com/GoX645w.jpg",
       "longitude": "12.3908",
       "latitude": "47.446602"
+    },
+    {
+      "resortId": "laplagne",
+      "name": "La Plagne",
+      "phone": "+33-4-79-09-02-01",
+      "imageUrl": "https://i.imgur.com/CtfNM4R.jpg",
+      "longitude": "6.6772",
+      "latitude": "45.5064"
+    },
+    {
+      "resortId": "larosiere",
+      "name": "La Rosière",
+      "phone": "+33-0-4-79-06-80-51",
+      "imageUrl": "https://i.imgur.com/zgoDm5e.jpg",
+      "longitude": "6.8492",
+      "latitude": "45.6272"
+    },
+    {
+      "resortId": "lesmenuires",
+      "name": "Les Menuires",
+      "phone": "+33-4-79-00-73-00",
+      "imageUrl": "https://i.imgur.com/8q75FZm.jpg",
+      "longitude": "6.5375",
+      "latitude": "45.3236"
+    },
+    {
+      "resortId": "loon",
+      "name": "Loon Mountain",
+      "phone": "800-229-5666",
+      "imageUrl": "https://i.imgur.com/mtqcPIo.jpg",
+      "longitude": "-71.625809",
+      "latitude": "44.056583"
+    },
+    {
+      "resortId": "loveland",
+      "name": "Loveland",
+      "phone": "303-71-5580",
+      "imageUrl": "https://i.imgur.com/KbUdx4G.jpg",
+      "longitude": "-105.89595",
+      "latitude": "39.679993"
+    },
+    {
+      "resortId": "mad-river-glen",
+      "name": "Mad River Glen",
+      "phone": "802-496-3551",
+      "imageUrl": "https://i.imgur.com/pEcsROg.jpg",
+      "longitude": "-72.919006",
+      "latitude": "44.201653"
+    },
+    {
+      "resortId": "mammoth-lakes",
+      "name": "Mammoth Mountain",
+      "phone": "800-626-6684",
+      "imageUrl": "https://i.imgur.com/KRpzpsy.jpg",
+      "longitude": "-119.037346",
+      "latitude": "37.651772"
+    },
+    {
+      "resortId": "megeve",
+      "name": "Megève",
+      "phone": "+33-4-50-21-27-28",
+      "imageUrl": "https://i.imgur.com/FuWttMg.jpg",
+      "longitude": "6.6181",
+      "latitude": "45.8578"
+    },
+    {
+      "resortId": "meribel",
+      "name": "Meribel",
+      "phone": "+33-0-4-79-08-60-01",
+      "imageUrl": "https://i.imgur.com/Rnm2fVJ.jpg",
+      "longitude": "6.5655",
+      "latitude": "45.3967"
+    },
+    {
+      "resortId": "monarch",
+      "name": "Monarch Mountain",
+      "phone": "719-530-5000",
+      "imageUrl": "https://i.imgur.com/i0nK8Zp.jpg",
+      "longitude": "-106.331696",
+      "latitude": "38.512714"
+    },
+    {
+      "resortId": "tremblant",
+      "name": "Mont Tremblant",
+      "phone": "1-888-738-1777",
+      "imageUrl": "https://i.imgur.com/Z3PezFL.jpg",
+      "longitude": "-74.584641",
+      "latitude": "46.213696"
+    },
+    {
+      "resortId": "mtbachelor",
+      "name": "Mount Bachelor",
+      "phone": "541-382-1709",
+      "imageUrl": "https://i.imgur.com/y7yIHlG.jpg",
+      "longitude": "-121.67865",
+      "latitude": "44.003559"
+    },
+    {
+      "resortId": "mthood",
+      "name": "Mount Hood",
+      "phone": "503-337-2222",
+      "imageUrl": "https://i.imgur.com/MzuG4ob.jpg",
+      "longitude": "-121.665688",
+      "latitude": "45.331936"
+    },
+    {
+      "resortId": "mtrose",
+      "name": "Mount Rose",
+      "phone": "775-849-0704",
+      "imageUrl": "https://i.imgur.com/0t7Qsvl.jpg",
+      "longitude": "-119.878601",
+      "latitude": "39.3283"
+    },
+    {
+      "resortId": "mountsnow",
+      "name": "Mount Snow",
+      "phone": "800-245-7669",
+      "imageUrl": "https://i.imgur.com/uDa8jNp.jpg",
+      "longitude": "-72.8936",
+      "latitude": "42.968166"
+    },
+    {
+      "resortId": "mount-sunapee",
+      "name": "Mount Sunapee",
+      "phone": "603-763-3500",
+      "imageUrl": "https://i.imgur.com/uzRdUBd.jpg",
+      "longitude": "-72.075394",
+      "latitude": "43.341194"
+    },
+    {
+      "resortId": "mthigh",
+      "name": "Mountain High",
+      "phone": "888-754-7878",
+      "imageUrl": "https://i.imgur.com/EMc21xJ.jpg",
+      "longitude": "-117.691544",
+      "latitude": "34.376888"
+    },
+    {
+      "resortId": "mtbrighton",
+      "name": "Mt Brighton",
+      "phone": "810-229-9581",
+      "imageUrl": "https://i.imgur.com/ZKZssJq.jpg",
+      "longitude": "-83.811553",
+      "latitude": "42.540783"
+    },
+    {
+      "resortId": "mt-spokane",
+      "name": "Mt Spokane",
+      "phone": "509-238-2220",
+      "imageUrl": "https://i.imgur.com/JV3c3gI.jpg",
+      "longitude": "-117.096107",
+      "latitude": "47.921261"
+    },
+    {
+      "resortId": "northstar",
+      "name": "Northstar",
+      "phone": "1-800-466-6784",
+      "imageUrl": "https://i.imgur.com/QZx7IbF.jpg",
+      "longitude": "-120.122086",
+      "latitude": "39.275173"
+    },
+    {
+      "resortId": "okemo",
+      "name": "Okemo",
+      "phone": "802-228-4041",
+      "imageUrl": "https://i.imgur.com/Bqi8FCg.jpg",
+      "longitude": "-72.716705",
+      "latitude": "43.401806"
+    },
+    {
+      "resortId": "owlshead",
+      "name": "Owl's Head",
+      "phone": "1-800-363-3342",
+      "imageUrl": "https://i.imgur.com/x4dDui8.jpg",
+      "longitude": "-72.297806",
+      "latitude": "45.074642"
+    },
+    {
+      "resortId": "parkcity",
+      "name": "Park City",
+      "phone": "435-649-8111",
+      "imageUrl": "https://i.imgur.com/xEP5qzH.jpg",
+      "longitude": "-111.508118",
+      "latitude": "40.651375"
+    },
+    {
+      "resortId": "pats-peak",
+      "name": "Pats Peak",
+      "phone": "1-888-728-7732",
+      "imageUrl": "https://i.imgur.com/tSwkWfZ.jpg",
+      "longitude": "-71.833412",
+      "latitude": "43.180679"
+    },
+    {
+      "resortId": "pico",
+      "name": "Pico Mountain",
+      "phone": "802-422-3333",
+      "imageUrl": "https://i.imgur.com/SzIvh1F.jpg",
+      "longitude": "-72.842613",
+      "latitude": "43.663277"
+    },
+    {
+      "resortId": "ragged-mountain",
+      "name": "Ragged Mountain",
+      "phone": "603-768-3600",
+      "imageUrl": "https://i.imgur.com/wsjwAU6.jpg",
+      "longitude": "-71.842003",
+      "latitude": "43.486305"
+    },
+    {
+      "resortId": "red-lodge-mountain",
+      "name": "Red Lodge Mountain",
+      "phone": "800-444-8977",
+      "imageUrl": "https://i.imgur.com/GHkTRrC.jpg",
+      "longitude": "-109.335037",
+      "latitude": "45.191021"
+    },
+    {
+      "resortId": "red-mountain",
+      "name": "Red Mountain",
+      "phone": "1-800-663-0105",
+      "imageUrl": "https://i.imgur.com/h5Ikmnt.jpg",
+      "longitude": "-117.819099",
+      "latitude": "49.105343"
+    },
+    {
+      "resortId": "saddleback",
+      "name": "Saddleback",
+      "phone": "866-918-2225",
+      "imageUrl": "https://i.imgur.com/ZCtO4Kw.jpg",
+      "longitude": "-70.632965",
+      "latitude": "44.983387"
+    },
+    {
+      "resortId": "schweitzer",
+      "name": "Schweitzer",
+      "phone": "208-254-4479",
+      "imageUrl": "https://i.imgur.com/r34sDp5.jpg",
+      "longitude": "-116.643562",
+      "latitude": "48.538433"
+    },
+    {
+      "resortId": "shawnee-mountain",
+      "name": "Shawnee Mountain",
+      "phone": "570-421-7231",
+      "imageUrl": "https://i.imgur.com/lLXnq7N.jpg",
+      "longitude": "-75.078117",
+      "latitude": "41.03688"
+    },
+    {
+      "resortId": "shawnee-peak",
+      "name": "Shawnee Peak",
+      "phone": "207-647-8444",
+      "imageUrl": "https://i.imgur.com/QxPbaca.jpg",
+      "longitude": "-70.817528",
+      "latitude": "44.053791"
+    },
+    {
+      "resortId": "sierra",
+      "name": "Sierra at Tahoe",
+      "phone": "530-659-7453",
+      "imageUrl": "https://i.imgur.com/Yk8Mfe1.jpg",
+      "longitude": "-120.090012",
+      "latitude": "38.792763"
+    },
+    {
+      "resortId": "silver-star",
+      "name": "Silver Star",
+      "phone": "1-800-663-4431",
+      "imageUrl": "https://i.imgur.com/ORMNJDf.jpg",
+      "longitude": "-119.208603",
+      "latitude": "50.438702"
+    },
+    {
+      "resortId": "smuggs",
+      "name": "Smugglers' Notch",
+      "phone": "800-419-4615",
+      "imageUrl": "https://i.imgur.com/tZXyBeJ.jpg",
+      "longitude": "-72.78833",
+      "latitude": "44.589092"
+    },
+    {
+      "resortId": "snow-valley",
+      "name": "Snow Valley",
+      "phone": "909-867-2751",
+      "imageUrl": "https://i.imgur.com/OOzdLX7.jpg",
+      "longitude": "-117.035667",
+      "latitude": "34.228409"
+    },
+    {
+      "resortId": "snowbasin",
+      "name": "Snowbasin",
+      "phone": "888-437-5488",
+      "imageUrl": "https://i.imgur.com/vn26jyr.jpg",
+      "longitude": "-111.859703",
+      "latitude": "41.214596"
+    },
+    {
+      "resortId": "snowbird",
+      "name": "Snowbird",
+      "phone": "1-800-232-9542",
+      "imageUrl": "https://i.imgur.com/eW5Tkr6.jpg",
+      "longitude": "-111.657082",
+      "latitude": "40.581074"
+    },
+    {
+      "resortId": "snowmass",
+      "name": "Snowmass",
+      "phone": "800-679-3151",
+      "imageUrl": "https://i.imgur.com/lUnTcI7.jpg",
+      "longitude": "-106.949158",
+      "latitude": "39.198471"
+    },
+    {
+      "resortId": "snowshoe",
+      "name": "Snowshoe Mountain",
+      "phone": "877-441-4386",
+      "imageUrl": "https://i.imgur.com/O2vHA32.jpg",
+      "longitude": "-79.989998",
+      "latitude": "38.400002"
+    },
+    {
+      "resortId": "solitude",
+      "name": "Solitude",
+      "phone": "801-534-1400",
+      "imageUrl": "https://i.imgur.com/qSqklGW.jpg",
+      "longitude": "-111.600708",
+      "latitude": "40.625648"
+    },
+    {
+      "resortId": "squaw",
+      "name": "Squaw Valley",
+      "phone": "1-800-403-0206",
+      "imageUrl": "https://i.imgur.com/2JpfqLB.jpg",
+      "longitude": "-120.233299",
+      "latitude": "39.196045"
+    },
+    {
+      "resortId": "st-anton-am-arlberg",
+      "name": "St. Anton Am Arlberg",
+      "phone": "+43-0-5446-22690",
+      "imageUrl": "https://i.imgur.com/e7CQxSp.jpg",
+      "longitude": "10.264",
+      "latitude": "47.127499"
+    },
+    {
+      "resortId": "steamboat",
+      "name": "Steamboat",
+      "phone": "1-800-879-9632",
+      "imageUrl": "https://i.imgur.com/z8oDoWH.jpg",
+      "longitude": "-106.805733",
+      "latitude": "40.458214"
+    },
+    {
+      "resortId": "stevens",
+      "name": "Stevens Pass",
+      "phone": "206-812-4510",
+      "imageUrl": "https://i.imgur.com/Fdb84Fa.jpg",
+      "longitude": "-121.421242",
+      "latitude": "47.76046"
+    },
+    {
+      "resortId": "stowe",
+      "name": "Stowe",
+      "phone": "1-888-253-4849",
+      "imageUrl": "https://i.imgur.com/Vn5zFqs.jpg",
+      "longitude": "-72.786873",
+      "latitude": "44.530502"
+    },
+    {
+      "resortId": "stratton",
+      "name": "Stratton",
+      "phone": "802-297-4000",
+      "imageUrl": "https://i.imgur.com/bvh8aKs.jpg",
+      "longitude": "-72.906303",
+      "latitude": "43.114017"
+    },
+    {
+      "resortId": "sugarbowl",
+      "name": "Sugar Bowl",
+      "phone": "530-426-9000",
+      "imageUrl": "https://i.imgur.com/WZS22CT.jpg",
+      "longitude": "-120.333206",
+      "latitude": "39.305447"
+    },
+    {
+      "resortId": "sugarbush",
+      "name": "Sugarbush",
+      "phone": "800-537-8427",
+      "imageUrl": "https://i.imgur.com/TXVaKw5.jpg",
+      "longitude": "-72.879318",
+      "latitude": "44.145721"
+    },
+    {
+      "resortId": "sugarloaf",
+      "name": "Sugarloaf",
+      "phone": "800-843-5623",
+      "imageUrl": "https://i.imgur.com/JHXSlVu.jpg",
+      "longitude": "-70.315147",
+      "latitude": "45.06728"
+    },
+    {
+      "resortId": "sun-peaks",
+      "name": "Sun Peaks",
+      "phone": "1-250-578-7222",
+      "imageUrl": "https://i.imgur.com/iU4fYmu.jpg",
+      "longitude": "-119.9132",
+      "latitude": "50.877369"
+    },
+    {
+      "resortId": "sunvalley",
+      "name": "Sun Valley",
+      "phone": "888-490-5950",
+      "imageUrl": "https://i.imgur.com/weAO5Le.jpg",
+      "longitude": "-114.339996",
+      "latitude": "43.709999"
+    },
+    {
+      "resortId": "sunday-river",
+      "name": "Sunday River",
+      "phone": "207-824-3000",
+      "imageUrl": "https://i.imgur.com/WbCcZfH.jpg",
+      "longitude": "-70.907394",
+      "latitude": "44.550358"
+    },
+    {
+      "resortId": "sunshine-village",
+      "name": "Sunshine Village",
+      "phone": "1-877-542-2633",
+      "imageUrl": "https://i.imgur.com/6y2RRQF.jpg",
+      "longitude": "-115.682602",
+      "latitude": "51.174175"
+    },
+    {
+      "resortId": "soelden",
+      "name": "Sölden",
+      "phone": "+43-0-57200-200",
+      "imageUrl": "https://i.imgur.com/Wyohdjh.jpg",
+      "longitude": "11.0092",
+      "latitude": "46.9702"
+    },
+    {
+      "resortId": "tahoe-donner",
+      "name": "Tahoe Donner",
+      "phone": "530-587-9444",
+      "imageUrl": "https://i.imgur.com/JEXdiI0.jpg",
+      "longitude": "-120.257957",
+      "latitude": "39.354725"
+    },
+    {
+      "resortId": "taos",
+      "name": "Taos Ski Valley",
+      "phone": "1-800-776-1111",
+      "imageUrl": "https://i.imgur.com/A36MwCO.jpg",
+      "longitude": "-105.450699",
+      "latitude": "36.596199"
+    },
+    {
+      "resortId": "telluride",
+      "name": "Telluride",
+      "phone": "1-877-935-5021",
+      "imageUrl": "https://i.imgur.com/3Gl3KKZ.jpg",
+      "longitude": "-107.850723",
+      "latitude": "37.932961"
+    },
+    {
+      "resortId": "vail",
+      "name": "Vail",
+      "phone": "888-500-5155",
+      "imageUrl": "https://i.imgur.com/hiUFVIC.jpg",
+      "longitude": "-106.356155",
+      "latitude": "39.605026"
+    },
+    {
+      "resortId": "verbier",
+      "name": "Verbier",
+      "phone": "+4127-775-25-11",
+      "imageUrl": "https://i.imgur.com/7ER13Bl.jpg",
+      "longitude": "7.233",
+      "latitude": "46.0935"
+    },
+    {
+      "resortId": "waterville",
+      "name": "Waterville Valley",
+      "phone": "603-236-8311",
+      "imageUrl": "https://i.imgur.com/yx52Qkq.jpg",
+      "longitude": "-71.519989",
+      "latitude": "43.961613"
+    },
+    {
+      "resortId": "whistler-blackcomb",
+      "name": "Whistler Blackcomb",
+      "phone": "1-800-766-0449",
+      "imageUrl": "https://i.imgur.com/86by0kF.jpg",
+      "longitude": "-122.922073",
+      "latitude": "50.10693"
+    },
+    {
+      "resortId": "whiteface",
+      "name": "Whiteface",
+      "phone": "518-946-2223",
+      "imageUrl": "https://i.imgur.com/xj1sCW9.jpg",
+      "longitude": "-73.870613",
+      "latitude": "44.356506"
+    },
+    {
+      "resortId": "wildcat",
+      "name": "Wildcat",
+      "phone": "888-754-9453",
+      "imageUrl": "https://i.imgur.com/5IYxbe1.jpg",
+      "longitude": "-71.236725",
+      "latitude": "44.264626"
+    },
+    {
+      "resortId": "windham",
+      "name": "Windham Mountain",
+      "phone": "518-734-4300",
+      "imageUrl": "https://i.imgur.com/EBFc9H3.jpg",
+      "longitude": "-74.259941",
+      "latitude": "42.295597"
+    },
+    {
+      "resortId": "winter-park",
+      "name": "Winter Park",
+      "phone": "970-726-5514",
+      "imageUrl": "https://i.imgur.com/DqrHAIq.jpg",
+      "longitude": "-105.764267",
+      "latitude": "39.891563"
+    },
+    {
+      "resortId": "winterplace",
+      "name": "Winterplace",
+      "phone": "304-787-3221",
+      "imageUrl": "https://i.imgur.com/bxED8T4.jpg",
+      "longitude": "-81.11824",
+      "latitude": "37.59594"
     }
   ]
 }

@@ -69,10 +69,12 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
             locationMarker.tag = resort
 
             mMap.setOnInfoWindowClickListener { marker ->
-                val loadingDialog = LoadingDialog()
-                loadingDialog.show(fragmentManager, "loading_dialog_fragment")
+                if (marker.title != getString(R.string.current_location)) {
+                    val loadingDialog = LoadingDialog()
+                    loadingDialog.show(fragmentManager, "loading_dialog_fragment")
 
-                LiftieServiceUtil.getLiftieDataForResort(marker.tag as StaticResortDataItem, this, loadingDialog)
+                    LiftieServiceUtil.getLiftieDataForResort(marker.tag as StaticResortDataItem, this, loadingDialog)
+                }
             }
         }
     }
