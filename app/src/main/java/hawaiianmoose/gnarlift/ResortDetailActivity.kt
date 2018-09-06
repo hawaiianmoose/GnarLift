@@ -24,13 +24,12 @@ import data.Temperature
 import data.Weather
 import kotlinx.android.synthetic.main.activity_resort_detail.*
 import utils.WeatherToIconConverter
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import java.util.*
 import android.text.style.StyleSpan
 import android.view.animation.AnimationUtils
 import android.widget.Toast
 import service.FavoriteService
+import java.text.SimpleDateFormat
 
 class ResortDetailActivity : AppCompatActivity() {
 
@@ -167,9 +166,10 @@ class ResortDetailActivity : AppCompatActivity() {
             stringBuilder.append(Html.fromHtml(latestTweet.text))
             tweet_text_view.setText(stringBuilder, TextView.BufferType.SPANNABLE)
 
-            val formatter = DateTimeFormatter.ofPattern("eee MMM dd HH:mm:ss Z yyyy", Locale.ENGLISH)
-            val date = LocalDate.parse(latestTweet.created_at, formatter)
-            tweet_date_text_view.text = date.format(DateTimeFormatter.ofPattern("dd MMM yyyy", Locale.ENGLISH))
+            val parser = SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH)
+            val date = parser.parse(latestTweet.created_at)
+            val formatter = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
+            tweet_date_text_view.text = formatter.format(date)
 
             if (!latestTweet.entities.media.any() || latestTweet.entities.media.first().media_url.isEmpty()) {
                 tweet_image_view.visibility = View.GONE
