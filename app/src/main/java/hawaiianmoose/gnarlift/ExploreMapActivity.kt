@@ -40,27 +40,36 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true)
             googleMap.getUiSettings().setMyLocationButtonEnabled(true)
+
+            addResortMarkers(mMap)
+
+            val gps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
+
+            if (gps != null) {
+                val currentLocation = LatLng(gps.latitude, gps.longitude)
+                val locationMarker = mMap.addMarker(MarkerOptions().position(currentLocation).title(getString(R.string.current_location)))
+                locationMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
+                locationMarker.showInfoWindow()
+                centerMap(currentLocation)
+            } else {
+                val defaultLocation = LatLng(staticData.resorts.first().latitude, staticData.resorts.first().longitude)
+                centerMap(defaultLocation)
+            }
         } else {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 1337)
         }
+    }
 
-        addResortMarkers(mMap)
 
-        val gps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-        val currentLocation = LatLng(gps.latitude, gps.longitude)
-        val locationMarker = mMap.addMarker(MarkerOptions().position(currentLocation).title(getString(R.string.current_location)))
-        locationMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
-        locationMarker.showInfoWindow()
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation))
+    private fun centerMap(latLng: LatLng) {
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
         mMap.animateCamera(CameraUpdateFactory.zoomTo(5f))
     }
 
-    fun addResortMarkers(mMap: GoogleMap) {
+    private fun addResortMarkers(mMap: GoogleMap) {
         for (resort in staticData.resorts) {
             val resortLocation = LatLng(resort.latitude, resort.longitude)
             val locationMarker = mMap.addMarker(MarkerOptions().position(resortLocation).title(resort.name))
