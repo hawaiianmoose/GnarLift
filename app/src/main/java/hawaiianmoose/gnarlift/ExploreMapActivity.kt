@@ -1,9 +1,5 @@
 package hawaiianmoose.gnarlift
 
-import android.Manifest
-import android.content.Context
-import android.content.pm.PackageManager
-import android.location.LocationManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -12,8 +8,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import android.support.v4.content.ContextCompat
-import android.support.v4.app.ActivityCompat
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import data.Constants
 import data.StaticResortDataItem
@@ -38,42 +32,20 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         mMap.setInfoWindowAdapter(CustomInfoWindowAdapter(this))
 
-        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            googleMap.setMyLocationEnabled(true)
-            googleMap.getUiSettings().setMyLocationButtonEnabled(true)
-
-            addResortMarkers(mMap)
-
-            val gps = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER)
-
-            if (gps != null) {
-                val currentLocation = LatLng(gps.latitude, gps.longitude)
-                val locationMarker = mMap.addMarker(MarkerOptions().position(currentLocation).title(getString(R.string.current_location)))
-                locationMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
-                locationMarker.showInfoWindow()
-                centerMap(currentLocation)
-            } else {
-                val defaultLocation = LatLng(staticData.resorts.first().latitude, staticData.resorts.first().longitude)
-                centerMap(defaultLocation)
-            }
-        } else {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), 1337)
-        }
+        addResortMarkers(mMap)
+        val defaultLocation = LatLng(39.8283, -98.5795)
+        centerMap(defaultLocation)
     }
-
 
     private fun centerMap(latLng: LatLng) {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng))
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(5f))
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(3.5f))
     }
 
     private fun addResortMarkers(mMap: GoogleMap) {
         for (resort in staticData.resorts) {
             val resortLocation = LatLng(resort.latitude, resort.longitude)
             val locationMarker = mMap.addMarker(MarkerOptions().position(resortLocation).title(resort.name))
-            locationMarker.showInfoWindow()
             locationMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
             locationMarker.tag = resort
 

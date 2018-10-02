@@ -192,10 +192,16 @@ class ResortDetailActivity : AppCompatActivity() {
     }
 
     private fun setTemperatureText(temp: Temperature) {
-        temperature_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_high_temperature))
-                .put("temperature",temp.max).format().toString()
 
-        if (!temp.min.isEmpty()) {
+        if (!temp.max.isNullOrEmpty()) {
+            temperature_text.visibility = View.VISIBLE
+            temperature_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_high_temperature))
+                    .put("temperature",temp.max ?: "-").format().toString()
+        } else {
+            temperature_text.visibility = View.GONE
+        }
+
+        if (!temp.min.isNullOrEmpty()) {
             low_temperature_text.visibility = View.VISIBLE
             low_temperature_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_low_temperature))
                     .put("temperature",temp.min).format().toString()

@@ -119,8 +119,8 @@ class Notice: Serializable {
 }
 
 class Temperature: Serializable {
-    var max: String = String()
-    var min: String = String()
+    var max: String? = String()
+    var min: String? = String()
 }
 
 class Webcams: Serializable {
