@@ -6,6 +6,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
@@ -18,6 +19,7 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
     private var staticData = StaticResortDataItemResponse()
+    private lateinit var defaultMarkerIcon: BitmapDescriptor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,10 +33,11 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.setInfoWindowAdapter(CustomInfoWindowAdapter(this))
+        defaultMarkerIcon = BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
 
-        addResortMarkers(mMap)
         val defaultLocation = LatLng(39.8283, -98.5795)
         centerMap(defaultLocation)
+        addResortMarkers(mMap)
     }
 
     private fun centerMap(latLng: LatLng) {
@@ -46,16 +49,14 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
         for (resort in staticData.resorts) {
             val resortLocation = LatLng(resort.latitude, resort.longitude)
             val locationMarker = mMap.addMarker(MarkerOptions().position(resortLocation).title(resort.name))
-            locationMarker.setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE))
+
+            locationMarker.setIcon(defaultMarkerIcon)
             locationMarker.tag = resort
 
             mMap.setOnInfoWindowClickListener { marker ->
-                if (marker.title != getString(R.string.current_location)) {
-                    val loadingDialog = LoadingDialog()
-                    loadingDialog.show(fragmentManager, "loading_dialog_fragment")
-
-                    LiftieServiceUtil.getLiftieDataForResort(marker.tag as StaticResortDataItem, this, loadingDialog)
-                }
+                val loadingDialog = LoadingDialog()
+                loadingDialog.show(fragmentManager, "loading_dialog_fragment")
+                LiftieServiceUtil.getLiftieDataForResort(marker.tag as StaticResortDataItem, this, loadingDialog)
             }
         }
     }

@@ -14,12 +14,7 @@ class CustomInfoWindowAdapter(val context: Context) : GoogleMap.InfoWindowAdapte
     private fun renderWindowText(marker: Marker?, view: View) {
         val title = marker?.title
         view.marker_title.text = title
-
-        if (title == context.getString(R.string.current_location)) {
-            view.marker_icon.visibility = View.GONE
-        } else {
-            view.marker_icon.visibility = View.VISIBLE
-        }
+        view.marker_icon.visibility = View.VISIBLE
     }
 
     override fun getInfoContents(marker: Marker?): View {
