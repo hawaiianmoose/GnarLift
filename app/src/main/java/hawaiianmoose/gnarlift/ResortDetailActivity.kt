@@ -4,8 +4,8 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.text.Html
 import android.text.Spannable
 import android.text.SpannableString
@@ -41,8 +41,8 @@ class ResortDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left)
         setContentView(R.layout.activity_resort_detail)
-        staticData = intent.extras[Constants.favoritesData] as StaticResortDataItem
-        liftieData = intent.extras[Constants.resortDetailData] as ResortDataItemResponse
+        staticData = intent.extras?.get(Constants.favoritesData) as StaticResortDataItem
+        liftieData = intent.extras?.get(Constants.resortDetailData) as ResortDataItemResponse
         favoritesData = FavoriteService.getInstance(this).getSavedFavorites()
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
@@ -106,7 +106,7 @@ class ResortDetailActivity : AppCompatActivity() {
         setCurrentWeatherIcon(liftieResortDataResponse.weather, current_weather_icon_image_view)
         setTemperatureText(liftieResortDataResponse.weather.temperature)
         setupTwitter(liftieResortDataResponse)
-        setupMap(liftieResortDataResponse)
+        //setupMap(liftieResortDataResponse)
         setupLifts(liftieResortDataResponse)
         setupPhone()
 
@@ -138,20 +138,20 @@ class ResortDetailActivity : AppCompatActivity() {
     }
 
     private fun setupMap(liftieResortDataResponse: ResortDataItemResponse) {
-        map_image.setOnClickListener {
-            val gmapsIntentUri = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_map_nav))
-                    .put("lat", liftieResortDataResponse.ll.get(1))
-                    .put("lon", liftieResortDataResponse.ll.get(0))
-                    .format().toString())
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmapsIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
-        }
-
-        Picasso.get().load(Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_resort_map_image_uri))
-                .put("lat", liftieResortDataResponse.ll.get(1))
-                .put("lon", liftieResortDataResponse.ll.get(0))
-                .format().toString())).fit().into(map_image)
+//        map_image.setOnClickListener {
+//            val gmapsIntentUri = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_map_nav))
+//                    .put("lat", liftieResortDataResponse.ll.get(1))
+//                    .put("lon", liftieResortDataResponse.ll.get(0))
+//                    .format().toString())
+//            val mapIntent = Intent(Intent.ACTION_VIEW, gmapsIntentUri)
+//            mapIntent.setPackage("com.google.android.apps.maps")
+//            startActivity(mapIntent)
+//        }
+//
+//        Picasso.get().load(Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_resort_map_image_uri))
+//                .put("lat", liftieResortDataResponse.ll.get(1))
+//                .put("lon", liftieResortDataResponse.ll.get(0))
+//                .format().toString())).fit().into(map_image)
     }
 
     @SuppressLint("NewApi")
@@ -174,7 +174,7 @@ class ResortDetailActivity : AppCompatActivity() {
             if (!latestTweet.entities.media.any() || latestTweet.entities.media.first().media_url.isEmpty()) {
                 tweet_image_view.visibility = View.GONE
             } else {
-                Picasso.get().load(latestTweet.entities.media.first().media_url).fit().centerCrop().into(tweet_image_view)
+                Picasso.get().load(latestTweet.entities.media.first().media_url_https).fit().centerCrop().into(tweet_image_view)
             }
 
             tweet_card_view.setOnClickListener {

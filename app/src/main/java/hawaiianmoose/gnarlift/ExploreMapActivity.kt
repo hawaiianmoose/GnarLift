@@ -1,6 +1,6 @@
 package hawaiianmoose.gnarlift
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,7 +23,7 @@ class ExploreMapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        staticData = intent.extras.get(Constants.staticResortData) as StaticResortDataItemResponse
+        staticData = intent.extras?.get(Constants.staticResortData) as StaticResortDataItemResponse
 
         setContentView(R.layout.activity_explore_map)
         val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment

@@ -4,7 +4,7 @@ import android.app.DialogFragment
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
-import android.support.v4.content.ContextCompat
+import androidx.core.content.ContextCompat
 import android.view.View
 import data.ResortDataItemResponse
 import data.StaticResortDataItem
