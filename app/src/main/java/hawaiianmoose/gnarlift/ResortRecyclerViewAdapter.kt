@@ -33,13 +33,15 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val resortName = filteredResortData[position].name.toString()
-        val resortId = filteredResortData[position].resortId.toString()
+        val resortData = filteredResortData[position]
+        val resortName = resortData.name.toString()
+        val resortId = resortData.resortId.toString()
 
         viewHolder.cardView.resort_name_text.text = resortName
-        Picasso.get().load(filteredResortData[position].imageUrl).fit().into(viewHolder.cardView.resort_card_background)
+        Picasso.get().load(resortData.imageUrl).fit().into(viewHolder.cardView.resort_card_background)
+        viewHolder.cardView.loading_animation_view.visibility = if (resortData.isLoading) View.VISIBLE else View.GONE
 
-        if (favoritesData.contains(filteredResortData[position].resortId)) {
+        if (favoritesData.contains(resortData.resortId)) {
             viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_24px)
         } else {
             viewHolder.cardView.favorite_resort_button.setImageResource(R.drawable.ic_sharp_star_border_24px)
@@ -48,9 +50,10 @@ class ResortRecyclerViewAdapter(private val staticResortDataResponse: StaticReso
         viewHolder.cardView.setOnClickListener {
             if (!isLoading) {
                 isLoading = true
+                resortData.isLoading = true
                 viewHolder.cardView.resort_card_view.alpha = 0.5f
-                viewHolder.cardView.loading_animation_view.visibility = View.VISIBLE
-                LiftieServiceUtil.getLiftieDataForResort(filteredResortData[position], viewHolder, parentContext, this)
+                this.notifyDataSetChanged()
+                LiftieServiceUtil.getLiftieDataForResort(resortData, viewHolder, parentContext, this)
             }
         }
 

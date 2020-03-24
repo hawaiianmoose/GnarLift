@@ -13,4 +13,5 @@ class StaticResortDataItem : Serializable {
     val imageUrl: String? = null
     val latitude: Double = 0.0
     val longitude: Double = 0.0
+    var isLoading: Boolean = false
 }

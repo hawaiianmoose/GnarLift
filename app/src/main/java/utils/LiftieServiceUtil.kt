@@ -39,7 +39,9 @@ object LiftieServiceUtil {
 
             override fun onSubscribe(d: Disposable) {}
             override fun onError(e: Throwable) {}
-            override fun onComplete() {}
+            override fun onComplete() {
+                staticData.isLoading = false
+            }
         })
 
         staticData.resortId?.let { LiftieService().fetchResortInfo(it, liftieSubject) }
