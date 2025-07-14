@@ -37,7 +37,7 @@
             android:layout_marginTop="8dp"
             android:contentDescription="@string/favorite_resort_content_description"
             android:src="@drawable/ic_sharp_star_border_24px"
-            android:tint="@color/favoritesColor"/>
+            app:tint="@color/favoritesColor" />
 
         <TextView
             android:id="@+id/resort_name_text"

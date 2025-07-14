@@ -5,16 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
-import kotlinx.android.synthetic.main.map_marker_window.view.*
+import hawaiianmoose.gnarlift.databinding.MapMarkerWindowBinding
 
 class CustomInfoWindowAdapter(val context: Context) : GoogleMap.InfoWindowAdapter {
 
+    private var _binding: MapMarkerWindowBinding? = null
+    private val binding get() = _binding!!
     private val window: View = LayoutInflater.from(context).inflate(R.layout.map_marker_window, null)
 
     private fun renderWindowText(marker: Marker?, view: View) {
         val title = marker?.title
-        view.marker_title.text = title
-        view.marker_icon.visibility = View.VISIBLE
+        binding.markerTitle.text = title
+        binding.markerIcon.visibility = View.VISIBLE
     }
 
     override fun getInfoContents(marker: Marker?): View {

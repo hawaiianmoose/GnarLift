@@ -18,7 +18,7 @@ class LoadingDialog : DialogFragment() {
         alertDialogBuilder.getContext().getTheme().applyStyle(R.style.Theme_Window_NoMinWidth, true)
 
         val dialog = alertDialogBuilder.create()
-        dialog.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         return dialog
     }

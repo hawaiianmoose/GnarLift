@@ -9,7 +9,7 @@ class FavoriteService private constructor (passedContext: Context) {
 
     companion object : SingletonHolder<FavoriteService, Context>(::FavoriteService)
 
-    fun getSavedFavorites(): MutableSet<String> {
+    fun getSavedFavorites(): Set<String?>? {
         val prefs = context.getSharedPreferences(Constants.sharedPrefFile, Context.MODE_PRIVATE)
         return prefs.getStringSet(Constants.favoriteResorts, mutableSetOf())
     }
@@ -19,8 +19,10 @@ class FavoriteService private constructor (passedContext: Context) {
         val prefs = context.getSharedPreferences(Constants.sharedPrefFile, Context.MODE_PRIVATE)
         val savedFavorites = prefs.getStringSet(Constants.favoriteResorts, mutableSetOf())
         val newSavedFavorites = mutableSetOf<String?>()
-        for (favoriteResort in savedFavorites) {
-            newSavedFavorites.add(favoriteResort)
+        if (savedFavorites != null) {
+            for (favoriteResort in savedFavorites) {
+                newSavedFavorites.add(favoriteResort)
+            }
         }
         newSavedFavorites.add(favorite)
 
@@ -32,8 +34,10 @@ class FavoriteService private constructor (passedContext: Context) {
         val prefs = context.getSharedPreferences(Constants.sharedPrefFile, Context.MODE_PRIVATE)
         val savedFavorites = prefs.getStringSet(Constants.favoriteResorts, mutableSetOf())
         val newSavedFavorites = mutableSetOf<String?>()
-        for (favoriteResort in savedFavorites) {
-            newSavedFavorites.add(favoriteResort)
+        if (savedFavorites != null) {
+            for (favoriteResort in savedFavorites) {
+                newSavedFavorites.add(favoriteResort)
+            }
         }
         newSavedFavorites.remove(favorite)
         prefs.edit().putStringSet(Constants.favoriteResorts, newSavedFavorites).apply()

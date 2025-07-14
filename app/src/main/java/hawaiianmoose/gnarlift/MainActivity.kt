@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadFavoritesData() {
-        favoritesData = FavoriteService.getInstance(this).getSavedFavorites()
+        favoritesData = FavoriteService.getInstance(this).getSavedFavorites() as MutableSet<String>
     }
 
     private fun loadStaticResortData() {

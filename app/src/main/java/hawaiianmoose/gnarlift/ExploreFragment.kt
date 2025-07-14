@@ -11,9 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import data.Constants
 import data.StaticResortDataItemResponse
-import kotlinx.android.synthetic.main.fragment_explore.*
+import hawaiianmoose.gnarlift.databinding.FragmentExploreBinding
 
 class ExploreFragment : Fragment() {
+    private var _binding: FragmentExploreBinding? = null
+    private val binding get() = _binding!!
     private var staticResortData: StaticResortDataItemResponse = StaticResortDataItemResponse()
     private var favoritesData: ArrayList<String> = arrayListOf()
 
@@ -36,8 +38,12 @@ class ExploreFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_explore, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentExploreBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -64,7 +70,7 @@ class ExploreFragment : Fragment() {
             }
         })
 
-        map_button.setOnClickListener {
+        binding.mapButton.setOnClickListener {
             val intent = Intent(this.context, ExploreMapActivity::class.java)
             intent.putExtra(Constants.staticResortData, staticResortData)
             startActivity(intent)
@@ -72,7 +78,7 @@ class ExploreFragment : Fragment() {
     }
 
     override fun onResume() {
-        explore_resorts_recycler.adapter?.notifyDataSetChanged()
+        binding.exploreResortsRecycler.adapter?.notifyDataSetChanged()
         super.onResume()
     }
 }

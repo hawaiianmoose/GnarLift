@@ -22,17 +22,19 @@ import data.ResortDataItemResponse
 import data.StaticResortDataItem
 import data.Temperature
 import data.Weather
-import kotlinx.android.synthetic.main.activity_resort_detail.*
 import utils.WeatherToIconConverter
 import java.util.*
 import android.text.style.StyleSpan
 import android.view.animation.AnimationUtils
 import android.widget.Toast
+import hawaiianmoose.gnarlift.databinding.ActivityResortDetailBinding
+import hawaiianmoose.gnarlift.databinding.FragmentInfoBinding
 import service.FavoriteService
 import java.text.SimpleDateFormat
 
 class ResortDetailActivity : AppCompatActivity() {
-
+    private var _binding: ActivityResortDetailBinding? = null
+    private val binding get() = _binding!!
     private var staticData: StaticResortDataItem = StaticResortDataItem()
     private var liftieData: ResortDataItemResponse = ResortDataItemResponse()
     private lateinit var favoritesData: MutableSet<String>
@@ -43,23 +45,23 @@ class ResortDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_resort_detail)
         staticData = intent.extras?.get(Constants.favoritesData) as StaticResortDataItem
         liftieData = intent.extras?.get(Constants.resortDetailData) as ResortDataItemResponse
-        favoritesData = FavoriteService.getInstance(this).getSavedFavorites()
+        favoritesData = FavoriteService.getInstance(this).getSavedFavorites() as MutableSet<String>
         val backButton = findViewById<Button>(R.id.back_button)
         backButton.setOnClickListener { this.onBackPressed() }
         bindStaticData()
         bindLiftieData(liftieData)
 
         if (favoritesData.contains(staticData.resortId)) {
-            favorite_title_button.setImageResource(R.drawable.ic_sharp_star_24px)
+            binding.favoriteTitleButton.setImageResource(R.drawable.ic_sharp_star_24px)
         } else {
-            favorite_title_button.setImageResource(R.drawable.ic_sharp_star_border_24px)
+            binding.favoriteTitleButton.setImageResource(R.drawable.ic_sharp_star_border_24px)
         }
 
-        favorite_title_button.setOnClickListener {
+        binding.favoriteTitleButton.setOnClickListener {
             if (favoritesData.contains(staticData.resortId)) {
                 removeFavoriteResort(staticData.resortId!!, staticData.name!!)
             } else {
-                val image = favorite_title_button as ImageView
+                val image = binding.favoriteTitleButton as ImageView
                 val iconBounce = AnimationUtils.loadAnimation(this, R.anim.bounce)
                 image.startAnimation(iconBounce)
                 addFavoriteResort(staticData.resortId!!, staticData.name!!)
@@ -68,14 +70,14 @@ class ResortDetailActivity : AppCompatActivity() {
     }
 
     private fun addFavoriteResort(resortId: String, resortName: String) {
-        favorite_title_button.setImageResource(R.drawable.ic_sharp_star_24px)
+        binding.favoriteTitleButton.setImageResource(R.drawable.ic_sharp_star_24px)
         FavoriteService.getInstance(this).saveFavorite(resortId)
         favoritesData.add(resortId)
         Toast.makeText(this, makeToast(resortName, R.string.toast_added), Toast.LENGTH_SHORT).show()
     }
 
     private fun removeFavoriteResort(resortId: String, resortName: String) {
-        favorite_title_button.setImageResource(R.drawable.ic_sharp_star_border_24px)
+        binding.favoriteTitleButton.setImageResource(R.drawable.ic_sharp_star_border_24px)
         FavoriteService.getInstance(this).removeFavorite(resortId)
         favoritesData.remove(resortId)
         Toast.makeText(this, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_SHORT).show()
@@ -98,25 +100,25 @@ class ResortDetailActivity : AppCompatActivity() {
     private fun bindLiftieData(liftieResortDataResponse: ResortDataItemResponse) {
         val viewManager = LinearLayoutManager(this.baseContext)
         val viewAdapter = ResortDetailRecyclerViewAdapter(liftieResortDataResponse)
-        lift_status.setHasFixedSize(true)
-        lift_status.layoutManager = viewManager
-        lift_status.adapter = viewAdapter
-        lift_status.isNestedScrollingEnabled = false
+        binding.liftStatus.setHasFixedSize(true)
+        binding.liftStatus.layoutManager = viewManager
+        binding.liftStatus.adapter = viewAdapter
+        binding.liftStatus.isNestedScrollingEnabled = false
 
-        setCurrentWeatherIcon(liftieResortDataResponse.weather, current_weather_icon_image_view)
+        setCurrentWeatherIcon(liftieResortDataResponse.weather, binding.currentWeatherIconImageView)
         setTemperatureText(liftieResortDataResponse.weather.temperature)
         setupTwitter(liftieResortDataResponse)
         //setupMap(liftieResortDataResponse)
         setupLifts(liftieResortDataResponse)
         setupPhone()
 
-        snow_base_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_snow_base_inches))
+        binding.snowBaseText.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_snow_base_inches))
                 .put("snow",liftieResortDataResponse.weather.snow).format().toString()
     }
 
     private fun setupPhone() {
-        resort_phone.text = staticData.phone
-        resort_phone.setOnClickListener {
+        binding.resortPhone.text = staticData.phone
+        binding.resortPhone.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse(Phrase.from(this.resources.getString(R.string.TEMPLATE_phone_dialer))
                     .put("phone_number", staticData.phone).format().toString())
@@ -125,16 +127,16 @@ class ResortDetailActivity : AppCompatActivity() {
     }
 
     private fun setupLifts(liftieResortDataResponse: ResortDataItemResponse) {
-        lift_Status_Bar.progress = liftieResortDataResponse.lifts.stats.percentage.open.toBigDecimal().toInt()
+        binding.liftStatusBar.progress = liftieResortDataResponse.lifts.stats.percentage.open.toBigDecimal().toInt()
 
         val stringBuilder = SpannableStringBuilder()
         val percentage = SpannableString(Phrase.from(this.resources.getString(R.string.TEMPLATE_lift_percent))
-                .put("lift_percent", lift_Status_Bar.progress.toString()).format().toString())
+                .put("lift_percent", binding.liftStatusBar.progress.toString()).format().toString())
         stringBuilder.append(percentage)
         stringBuilder.append(resources.getString(R.string.of_lifts_open))
         val boldStyle = StyleSpan(android.graphics.Typeface.BOLD)
         stringBuilder.setSpan(boldStyle, 0, percentage.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-        lift_percent_text.text = stringBuilder
+        binding.liftPercentText.text = stringBuilder
     }
 
     private fun setupMap(liftieResortDataResponse: ResortDataItemResponse) {
@@ -164,20 +166,20 @@ class ResortDetailActivity : AppCompatActivity() {
             twitterHandle.setSpan(ForegroundColorSpan(resources.getColor(R.color.tweet_color)), 0, twitterHandle.length, 0)
             stringBuilder.append(twitterHandle)
             stringBuilder.append(Html.fromHtml(latestTweet.text))
-            tweet_text_view.setText(stringBuilder, TextView.BufferType.SPANNABLE)
+            binding.tweetTextView.setText(stringBuilder, TextView.BufferType.SPANNABLE)
 
             val parser = SimpleDateFormat("EEE MMM d HH:mm:ss zzz yyyy", Locale.ENGLISH)
             val date = parser.parse(latestTweet.created_at)
             val formatter = SimpleDateFormat("dd MMM yyyy", Locale.ENGLISH)
-            tweet_date_text_view.text = formatter.format(date)
+            binding.tweetDateTextView.text = formatter.format(date)
 
             if (!latestTweet.entities.media.any() || latestTweet.entities.media.first().media_url.isEmpty()) {
-                tweet_image_view.visibility = View.GONE
+                binding.tweetImageView.visibility = View.GONE
             } else {
-                Picasso.get().load(latestTweet.entities.media.first().media_url_https).fit().centerCrop().into(tweet_image_view)
+                Picasso.get().load(latestTweet.entities.media.first().media_url_https).fit().centerCrop().into(binding.tweetImageView)
             }
 
-            tweet_card_view.setOnClickListener {
+            binding.tweetCardView.setOnClickListener {
                 val twitterDeeplink = Uri.parse(Phrase.from(resources.getString(R.string.TEMPLATE_twitter_deeplink))
                         .put("user", liftieResortDataResponse.twitter.user)
                         .format().toString())
@@ -185,25 +187,25 @@ class ResortDetailActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         } else {
-            Picasso.get().load(staticData.imageUrl).fit().centerCrop().into(default_image_view)
-            tweet_card_view.visibility = View.INVISIBLE
-            default_image_view.visibility = View.VISIBLE
+            Picasso.get().load(staticData.imageUrl).fit().centerCrop().into(binding.defaultImageView)
+            binding.tweetCardView.visibility = View.INVISIBLE
+            binding.defaultImageView.visibility = View.VISIBLE
         }
     }
 
     private fun setTemperatureText(temp: Temperature) {
 
         if (!temp.max.isNullOrEmpty()) {
-            temperature_text.visibility = View.VISIBLE
-            temperature_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_high_temperature))
+            binding.temperatureText.visibility = View.VISIBLE
+            binding.temperatureText.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_high_temperature))
                     .put("temperature",temp.max ?: "-").format().toString()
         } else {
-            temperature_text.visibility = View.GONE
+            binding.temperatureText.visibility = View.GONE
         }
 
         if (!temp.min.isNullOrEmpty()) {
-            low_temperature_text.visibility = View.VISIBLE
-            low_temperature_text.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_low_temperature))
+            binding.lowTemperatureText.visibility = View.VISIBLE
+            binding.lowTemperatureText.text = Phrase.from(this.resources.getString(R.string.TEMPLATE_low_temperature))
                     .put("temperature",temp.min).format().toString()
         }
     }
