@@ -41,6 +41,8 @@ class ResortDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        _binding = ActivityResortDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left)
         setContentView(R.layout.activity_resort_detail)
         staticData = intent.extras?.get(Constants.favoritesData) as StaticResortDataItem

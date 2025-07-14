@@ -36,19 +36,25 @@ class FavoritesFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recycler = view.findViewById(R.id.favorite_resorts_recycler) as RecyclerView
-        val viewManager = LinearLayoutManager(view.context)
+        val viewManager = LinearLayoutManager(requireContext())
         val viewAdapter = FavoritesResortRecyclerViewAdapter(staticResortData, requireContext())
-        recycler.setHasFixedSize(true)
-        recycler.layoutManager = viewManager
-        recycler.adapter = viewAdapter
+        binding.favoriteResortsRecycler.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
     }
 
     override fun onResume() {

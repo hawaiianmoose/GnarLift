@@ -20,7 +20,7 @@ class FavoritesResortRecyclerViewAdapter(
 ) : RecyclerView.Adapter<FavoritesResortRecyclerViewAdapter.ViewHolder>(), BaseResortRecyclerAdapter {
 
     override var isLoading: Boolean = false
-    var favoritesData = FavoriteService.getInstance(parentContext).getSavedFavorites()?.toMutableSet()
+    var favoritesData = FavoriteService.getInstance(parentContext).getSavedFavorites()
     private var favoritesResortData =
         staticResortDataResponse.resorts.filter { r -> favoritesData?.contains(r.resortId) == true }
             .toMutableList()
@@ -60,7 +60,6 @@ class FavoritesResortRecyclerViewAdapter(
 
     fun refreshFavorites() {
         favoritesData = FavoriteService.getInstance(parentContext).getSavedFavorites()
-            ?.toMutableList() as MutableSet<String?>?
         favoritesResortData = staticResortDataResponse.resorts.filter {
             favoritesData?.contains(it.resortId) ?: false
         }.toMutableList()
@@ -77,7 +76,7 @@ class FavoritesResortRecyclerViewAdapter(
                 DialogInterface.BUTTON_POSITIVE -> {
                     dialog.dismiss()
                     FavoriteService.getInstance(parentContext).removeFavorite(resortId)
-                    favoritesData?.remove(resortId)
+                    //favoritesData.remove(resortId)
                     favoritesResortData.removeAt(position)
                     Toast.makeText(parentContext, makeToast(resortName, R.string.toast_removed), Toast.LENGTH_SHORT).show()
                     notifyDataSetChanged()
